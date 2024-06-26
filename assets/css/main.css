@@ -15,6 +15,9 @@
 /* @import './apps/note/pages/NoteIndex.css'; */
 @import url(apps/note/cmps/headerNote.css);
 @import url(apps/note/cmps/navNote.css);
+@import url(apps/note/cmps/editNote.css);
+@import url(apps/note/cmps/listNote.css);
+@import url(apps/note/cmps/prevNote.css);
 /* @import './apps/mail/pages/MailIndex.css'; */
 
 /* Cmps */
