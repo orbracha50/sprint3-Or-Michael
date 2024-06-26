@@ -1,1 +1,22 @@
  /* mail list */
+
+.mail-list {
+   list-style: none;
+}
+
+ .mail-header.read{
+    background-color: rgba(242, 246, 252, 1);
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    color: rgba(32, 33, 36, 1);
+ }
+
+ .mail-header{
+    display: flex;
+    flex-grow: 1;
+    gap: 35px;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: white;
+    color: rgba(32, 33, 36, 1);
+    box-shadow: rgba(255, 255, 255, 0.12) 0px -1px 0px 0px inset;
+ }

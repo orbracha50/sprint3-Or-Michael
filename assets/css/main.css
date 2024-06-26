@@ -21,4 +21,9 @@
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
 
-/* @import './apps/mail/cmps/MailList.css'; */
+
+
+/* Mail Cmps */
+@import './apps/mail/cmps/MailList.css'; 
+@import './apps/mail/cmps/MailLoader.css'; 
+@import "./apps/mail/cmps/Accordion.css";
