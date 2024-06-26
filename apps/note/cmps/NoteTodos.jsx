@@ -1,6 +1,6 @@
 import { NoteService } from "../services/note.service.js";
 import { NoteBar } from "./NoteBar.jsx";
-export function NodeTodos({note,notes}) {
+export function NodeTodos({note,removeNote}) {
     function toggleTodo({ target }, todo) {
         const txt = todo
         target.classList.toggle('done')
@@ -23,6 +23,6 @@ export function NodeTodos({note,notes}) {
         <ul >
             {note.info.todos.map(todo => <div className="todo" key={todo.txt}><button className={`btn-todo ${(todo.doneAt !== null) ? 'done' : ''}`} onClick={(ev) => toggleTodo(ev, todo.txt)}></button><li>{todo.txt}</li></div>)}
         </ul>
-        <NoteBar note={note} notesTo={notes}/>
+        <NoteBar note={note}  removeNote={removeNote}/>
     </div>
 }

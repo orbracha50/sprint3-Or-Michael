@@ -11,7 +11,6 @@ export const NoteService = {
     get,
     remove,
     save,
-    addGoogleBook,
     getNextBookId,
     getEmptyBook,
     getFilterBy,
@@ -131,7 +130,7 @@ function getEmptyBook() {
     }
 
 }
-function addGoogleBook(book) {
+function addNo(book) {
     const url = URL + book
     const data = axios.get(url)
         .then(data => data = data.data.items)
