@@ -7,6 +7,11 @@ const MAIL_KEY = 'mailDB'
 
 _createEmails()
 
+const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+   }
+
 export const mailService = {
     query,
     get,
@@ -17,17 +22,27 @@ export const mailService = {
     setFilterBy,
     getDefaultFilter,
     getFilterFromSearchParams,
+    getLoggedInUser,
 }
 
 function query(filterBy = {}) {
     return asyncStorageService.query(MAIL_KEY)
         .then(mails => {
-            // if (filterBy.title) {
-            //     const regex = new RegExp(filterBy.title, 'i')
+            // if (filterBy.status) {
+            //     const regex = new RegExp(filterBy.status, 'i')
             //     mails = mails.filter(mail => regex.test(mail.title))
             // }
-            // if (filterBy.price) {
-            //     mails = mails.filter(mail => mail.listPrice.amount >= filterBy.price)
+            if (filterBy.txt) {
+                mails = mails.filter(mail => regex.test(mail.subject))
+            }
+            if (filterBy.isRead) {
+                mails = mails.filter(mail => mail.isRead === filterBy.isRead)
+            }
+            if (filterBy.isStared) {
+                mails = mails.filter(mail => mail.isStared === filterBy.isStared)
+            }
+            // if (filterBy.lables) {
+            //     mails = mails.filter(mail => mail.lables === filterBy.lables)
             // }
             return mails
         })
@@ -51,8 +66,20 @@ function save(mail) {
 
 function getEmptyEmail() {
     return {
-
+        id: '',
+        subject: '',
+        body: '',
+        isRead: null,
+        sentAt: null,
+        removeAt: null,
+        from: loggedinUser.email,
+        to: '',
+        lables: [],
     }
+}
+
+function getLoggedInUser() {
+    return loggedinUser
 }
 
 function getFilterFromSearchParams(searchParams) {
@@ -67,8 +94,11 @@ function getFilterFromSearchParams(searchParams) {
 
 function getDefaultFilter() {
     return {
-        title: '',
-        price: 0
+        status: '',
+        txt: '',
+        isRead: null,
+        isStared: null,
+        lables: [],
     }
 }
 
@@ -79,8 +109,11 @@ function getFilterBy() {
 }
 
 function setFilterBy(filterBy = {}) {
-    if (filterBy.title !== undefined) filterBy.title = filterBy.title
-    if (filterBy.price !== undefined) filterBy.price = filterBy.price
+    if (filterBy.status !== undefined) filterBy.status = filterBy.status
+    if (filterBy.txt !== undefined) filterBy.txt = filterBy.txt
+    if (filterBy.isRead !== undefined) filterBy.isRead = filterBy.isRead
+    if (filterBy.isStared !== undefined) filterBy.isStared = filterBy.isStared
+    if (filterBy.lables !== undefined) filterBy.lables = filterBy.lables
     return filterBy
 }
 
@@ -91,13 +124,30 @@ function _createEmails() {
         for (let i = 0; i < 10; i++) {
             const mail = {
                 id: utilService.makeId(),
-                subject: utilService.makeLorem(5),
+                subject: utilService.makeLorem(3),
                 body: utilService.makeLorem(50),
                 isRead: Math.random() > 0.7,
+                isStared: Math.random() > 0.7,
                 sentAt: Date.now(),
                 removeAt: null,
                 from: `${utilService.makeLorem(1)}@${utilService.makeLorem(1)}.com`,
                 to: `user@appsus.com`,
+                lables: [],
+            }
+            mails.push(mail)
+        }
+        for (let i = 0; i < 10; i++) {
+            const mail = {
+                id: utilService.makeId(),
+                subject: utilService.makeLorem(3),
+                body: utilService.makeLorem(50),
+                isRead: null,
+                isStared: Math.random() > 0.7,
+                sentAt: Date.now(),
+                removeAt: null,
+                from: `user@appsus.com`,
+                to: `${utilService.makeLorem(1)}@${utilService.makeLorem(1)}.com`,
+                lables: [],
             }
             mails.push(mail)
         }

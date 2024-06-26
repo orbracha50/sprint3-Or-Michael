@@ -4,7 +4,8 @@
     --margin: 0.4em;
     --time: 0.2s;
     padding: 0.3em;
-    border-bottom: 1.5px solid transparent;
+    font-size: 1.2em;
+    border-bottom: 1px solid transparent;
     border-bottom-color: hsla(340 10% 52%/.5);
     background-color: rgb(255, 255, 255);
     transition: background-color var(--time);
@@ -35,7 +36,7 @@
 /** CONTENT */
 .accordion .content {
     max-height: 0;
-    font-size: 1.3em;
+    font-size: 1.1em;
     padding: 0 var(--margin);
     overflow: hidden;
 

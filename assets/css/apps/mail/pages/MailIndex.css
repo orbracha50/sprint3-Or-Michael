@@ -1,1 +1,10 @@
  /* mail index  */
+
+ .compose-mail{
+    border-radius: 15px;
+    background-color: rgb(194, 231, 255);
+    color: rgb(0, 29, 53);
+    padding: 20px;
+    border-style: none;
+    font-size: 16px;
+ }

@@ -21,3 +21,11 @@
 .grid {
     display: grid;
 }
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}

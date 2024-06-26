@@ -1,22 +1,45 @@
- /* mail list */
+/* mail list */
 
-.mail-list {
-   list-style: none;
+.icons{
+  list-style: none;
+  color: rgba(32, 33, 36);
+  display: flex;
+  gap: 5px;
 }
 
- .mail-header.read{
-    background-color: rgba(242, 246, 252, 1);
-    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
-    color: rgba(32, 33, 36, 1);
- }
+.mail-list {
+  list-style: none;
+}
 
- .mail-header{
-    display: flex;
-    flex-grow: 1;
-    gap: 35px;
-    padding: 10px;
-    justify-content: space-between;
-    background-color: white;
-    color: rgba(32, 33, 36, 1);
-    box-shadow: rgba(255, 255, 255, 0.12) 0px -1px 0px 0px inset;
- }
+.mail-container.read {
+  background-color: rgba(242, 246, 252, 1);
+  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  color: rgba(32, 33, 36, 0.6);
+}
+
+.mail-container {
+  display: flex;
+  flex-grow: 1;
+  gap: 50px;
+  padding: 10px;
+  justify-content: space-between;
+  background-color: white;
+  color: rgba(32, 33, 36);
+  box-shadow: rgba(255, 255, 255, 0.12) 0px -1px 0px 0px inset;
+}
+
+.shifted {
+   margin-left: 250px;
+}
+
+
+.mail-index {
+   margin-left: 200px;
+   margin-right: 50px;
+   flex-grow: 1;
+   padding: 20px;
+   box-sizing: border-box;
+   transition: margin-left 0.5s;
+   transition: margin-right 0.5s;
+   transition: all 0.5s;
+}
