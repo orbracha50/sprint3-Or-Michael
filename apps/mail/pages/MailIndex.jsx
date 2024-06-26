@@ -38,10 +38,6 @@ export function MailIndex() {
       })
   }
 
-  function unReadMail(mailId) {
-    console.log(mailId)
-  }
-
   if (!mails) return <div className="mail-loader"></div>
   return (
     <section className="mail-index">
@@ -61,7 +57,7 @@ export function MailIndex() {
       </button>
       <MailSideBar />
       <MailList mails={mails} deleteMail={deleteMail} />
-      
+
       <Outlet />
     </section>
   )

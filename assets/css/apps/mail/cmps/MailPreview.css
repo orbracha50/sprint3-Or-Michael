@@ -1,0 +1,21 @@
+.mail-preview {
+    font-family: roboto, sans-serif;
+    font-size: 1.1em;
+    border-bottom: 1px solid transparent;
+}
+
+.mail-preview:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(100, 121, 143, 1) 1px 1px 1px 1px;
+}
+
+.mail-preview .mail-container {
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+}
+
+.mail-preview .mail-container h2 {
+    flex-grow: 1;
+    margin: 0;
+}

@@ -32,7 +32,10 @@ export function MailCompose() {
 
       function onDraftMail(ev) {
         ev.preventDefault()
-        if(!mailToEdit.to) return
+        if(!mailToEdit.to) {
+          navigate("/mail")
+          location.reload()
+        }
         mailService.save(mailToEdit)
           .then(() => {
             navigate("/mail")
