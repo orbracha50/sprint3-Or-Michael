@@ -1,0 +1,19 @@
+/* btn todos */
+.btn-todo {
+    height: 20px;
+    width: 20px;
+}
+
+.btn-todo::before {
+
+    content: "✔";
+    position: relative;
+    top: -10%;
+    right: 75%;
+    opacity: 0;
+}
+
+.done::before {
+    opacity: 1;
+}
+
