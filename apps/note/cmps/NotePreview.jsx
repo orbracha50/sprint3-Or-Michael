@@ -1,6 +1,9 @@
 
 import { utilService } from "../../../services/util.service.js";
 import { NoteService } from "../services/note.service.js";
+import { NoteImg } from "./NoteImg.jsx";
+import { NodeTodos } from "./NoteTodos.jsx";
+import { NoteTxt } from "./NoteTxt.jsx";
 export function NotePreview({ note }) {
     function toggleTodo({ target }, todo) {
         const txt = todo
@@ -20,23 +23,8 @@ export function NotePreview({ note }) {
         NoteService.save(note)
     }
     return <section>
-        {note.type === 'NoteTxt' &&
-            <div className='notes' style={note.style}>
-                <h1>{note.info.title}</h1>
-                <p>{note.info.txt}</p>
-            </div>}
-        {note.type === 'NoteImg' &&
-            <div className='notes' style={note.style}>
-                <img src={note.info.url} alt="" />
-                <h1>{note.info.title}</h1>
-                <p>{note.info.txt}</p>
-            </div>}
-        {note.type === 'NoteTodos' &&
-            <div className='notes' style={note.style}>
-                <h1>{note.info.title}</h1>
-                <ul >
-                    {note.info.todos.map(todo => <div className="todo" key={todo.txt}><button className={`btn-todo ${(todo.doneAt !== null)? 'done': '' }`} onClick={(ev) => toggleTodo(ev, todo.txt)}></button><li>{todo.txt}</li></div>)}
-                </ul>
-            </div>}
+        {note.type === 'NoteTxt' &&   <NoteTxt note={note} />}
+        {note.type === 'NoteImg' &&  <NoteImg note={note} />}
+        {note.type === 'NoteTodos' && <NodeTodos note={note} />}
     </section>
 }
