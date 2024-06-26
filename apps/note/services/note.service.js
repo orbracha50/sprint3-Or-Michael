@@ -38,12 +38,12 @@ function query(filterBy = {}) {
         })
 }
 
-function get(bookId) {
-    return storageService.get(NOTE_KEY, bookId)
+function get(noteId) {
+    return storageService.get(NOTE_KEY, noteId)
 }
 
-function remove(bookId) {
-    return storageService.remove(NOTE_KEY, bookId)
+function remove(noteId) {
+    return asyncStorageService.remove(NOTE_KEY, noteId)
 }
 
 function save(note) {

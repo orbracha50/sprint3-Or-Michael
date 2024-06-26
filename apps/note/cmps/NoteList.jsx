@@ -8,7 +8,7 @@ export function NoteList() {
     useEffect(() => {
         loadNotes()
         /* setSearchParams(filterBy) */
-    }, [typeNote])
+    }, [typeNote,notes])
 
     function loadNotes() {
         NoteService.query()
@@ -18,6 +18,7 @@ export function NoteList() {
             })
     }
     if (notes === undefined) return
+    console.log(notes)
     return <section className="list-container">
         {typeNote === null&& <div className="box-note">
             <h3  onClick={()=>setTypeNote('text')}>Take a note.... </h3>
@@ -29,7 +30,7 @@ export function NoteList() {
         </div>}
          {typeNote !== null && <NoteAdd type={typeNote}/> }
         <section className="notes-list">
-            {notes.map(note => <NotePreview key={note.id} note={note} />)}
+            {notes.map((note) => <NotePreview key={note.id} note={note}  notes={notes}/>)}
         </section>
     </section>
 }
