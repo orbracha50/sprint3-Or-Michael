@@ -1,0 +1,93 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 15px;
+    height: 100vh;
+    width: max-content;
+    transition:  0.8s;
+    
+}
+
+.nav:hover {
+    height: 100vh;
+    width: 30%;
+    box-shadow: 10px 1px lightgray;
+}
+
+.nav li {
+    list-style: none;
+    padding: 5px;
+    border-radius: 10px;
+    position: relative;
+    transition: 0.8s;
+}
+
+.note:before,
+.rem:before,
+.arch:before,
+.edit:before,
+.bin:before {
+    content: "";
+    transition: 0.8s;
+}
+.open-menu{
+    
+}
+.nav svg {
+    height: 30px;
+    width: 30px;
+}
+
+.nav li:hover {
+    background-color: lightgray;
+}
+
+.nav:hover .note:before {
+    content: "Notes";
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav:hover .rem:before {
+    content: "Reminders";
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav:hover .arch:before {
+    content: "Archive";
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav:hover .edit:before {
+    content: "Edit";
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav:hover .bin:before {
+    content: "Bin";
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.selected{
+    background-color: goldenrod;
+    border: 1px solid black;
+}
