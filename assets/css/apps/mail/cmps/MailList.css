@@ -20,7 +20,7 @@
 .mail-container {
   display: flex;
   flex-grow: 1;
-  gap: 25px;
+  gap: 50px;
   padding: 10px;
   justify-content: space-between;
   background-color: white;
@@ -34,8 +34,8 @@
 
 
 .mail-index {
-   margin-left: 100px;
-   margin-right: 100px;
+   margin-left: 200px;
+   margin-right: 50px;
    flex-grow: 1;
    padding: 20px;
    box-sizing: border-box;

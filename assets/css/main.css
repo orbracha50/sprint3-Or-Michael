@@ -32,3 +32,5 @@
 @import './apps/mail/cmps/MailLoader.css'; 
 @import "./apps/mail/cmps/Accordion.css";
 @import "./apps/mail/cmps/SideBar.css";
+@import "./apps/mail/pages/MailIndex.css";
+@import "./apps/mail/cmps/MailCompose.css";

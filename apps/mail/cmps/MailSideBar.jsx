@@ -3,24 +3,20 @@ const { Link } = ReactRouterDOM
 export function MailSideBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
-  const openNav = () => {
-    setIsSidebarOpen(true)
-  }
-
-  const closeNav = () => {
-    setIsSidebarOpen(false)
+  const setNav = () => {
+    setIsSidebarOpen(isSidebarOpen => !isSidebarOpen)
   }
 
   return (
     <section>
       <h1>
-        <span className="openbtn" id="openbtn" onClick={openNav}>
+        <span className="openbtn" id="openbtn" onClick={() => setNav()}>
           &#9776;
         </span>
         Email App
       </h1>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`} id="sidebar">
-        <button className="closebtn" onClick={closeNav}>
+        <button className="closebtn" onClick={() => setNav()}>
           &times;
         </button>
         <Link to="/mail/compose">Compose</Link>

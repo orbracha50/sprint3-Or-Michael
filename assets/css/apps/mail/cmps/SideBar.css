@@ -1,6 +1,5 @@
 .sidebar {
-    display: none;
-    width: 250px;
+    width: 0;
     background-color: #f1f3f4;
     height: 100vh;
     padding: 20px;
@@ -10,6 +9,11 @@
     left: 0;
     overflow-y: auto;
     transition: transform 0.3s, width 0.3s;
+    transform: translateX(-200px);
+}
+
+.sidebar.open {
+    width: 200px;
     transform: translateX(0);
 }
 
