@@ -160,7 +160,7 @@ function _createNotes() {
     if (!notes || !notes.length) {
         notes = [
             {
-                id: 'n101',
+                id: utilService.makeId(),
                 createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: true,
@@ -173,7 +173,111 @@ function _createNotes() {
                 }
             },
             {
-                id: 'n102',
+                id: utilService.makeId(),
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'Fullstack Me Baby!',
+                    title: 'testing'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'Fullstack Me Baby!',
+                    title: 'testing'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'Fullstack Me Baby!',
+                    title: 'testing'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
