@@ -2,7 +2,7 @@
 // note service
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
-import { storageServiceASYNC } from '../../../services/async-storage.service.js'
+import {  asyncStorageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'noteDB'
 _createNotes()
@@ -22,7 +22,7 @@ export const NoteService = {
 }
 
 function query(filterBy = {}) {
-    return storageServiceASYNC.query(NOTE_KEY)
+    return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
          
             if (filterBy.txt) {
@@ -48,9 +48,9 @@ function remove(bookId) {
 
 function save(note) {
     if (note.id) {
-        return storageServiceASYNC.put(NOTE_KEY, note)
+        return asyncStorageService.put(NOTE_KEY, note)
     } else {
-        return storageServiceASYNC.post(NOTE_KEY, note)
+        return asyncStorageService.post(NOTE_KEY, note)
     }
 }
 function getDefaultFilter() {

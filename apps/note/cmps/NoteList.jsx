@@ -1,5 +1,5 @@
 import { NoteService } from "../services/note.service.js"
-import { NoteCreate } from "./NoteCreate.jsx"
+import { NoteAdd } from "./NoteAdd.jsx"
 import { NotePreview } from "./NotePreview.jsx"
 const { useEffect, useState } = React
 export function NoteList() {
@@ -27,7 +27,7 @@ export function NoteList() {
                 <svg onClick={()=>setTypeNote('image')} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90-120-120 160Zm-40 80v-560 560Z" /></svg>
             </section>
         </div>}
-         {typeNote !== null && <NoteCreate type={typeNote}/> }
+         {typeNote !== null && <NoteAdd type={typeNote}/> }
         <section className="notes-list">
             {notes.map(note => <NotePreview key={note.id} note={note} />)}
         </section>
