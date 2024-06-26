@@ -13,7 +13,8 @@
 @import './pages/home.css';
 
 /* @import './apps/note/pages/NoteIndex.css'; */
-
+@import url(apps/note/cmps/headerNote.css);
+@import url(apps/note/cmps/navNote.css);
 /* @import './apps/mail/pages/MailIndex.css'; */
 
 /* Cmps */
