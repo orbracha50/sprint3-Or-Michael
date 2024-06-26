@@ -1,0 +1,35 @@
+.sidebar {
+    display: none;
+    width: 250px;
+    background-color: #f1f3f4;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    transition: transform 0.3s, width 0.3s;
+    transform: translateX(0);
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #e8eaed;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 36px;
+    color: black;
+    cursor: pointer;
+}

@@ -11,7 +11,7 @@ export function Accordion({ children, subject, from, sentAt, isRead}) {
         setIsOpen((isOpen) => !isOpen)
       }} className={`mail-container mail-header`}>
         <section className={`mail-header ${readClass}`}>
-        <h2>Subject: {subject}</h2>
+        <h3>Subject: {subject}</h3>
         <h3>From: {from}</h3>
         <h4>{sentAt}</h4>
         <span className="arrow">⌄</span>
