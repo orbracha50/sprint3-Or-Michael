@@ -18,15 +18,25 @@
 }
 
 .sidebar a {
-    text-decoration: none;
-    color: black;
-    display: block;
     padding: 10px 15px;
-    border-radius: 5px;
 }
 
-.sidebar a:hover {
-    background-color: #e8eaed;
+.sidebar svg {
+    display: inline-block;
+    transition: background-color 0.25s;
+    height: 1.5em;
+    width: 1.5em;
+    padding: 0.25em;
+    border-radius: 50%;
+}
+
+.sidebar svg:hover {
+    background-color: rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+.siderbar-componenets {
+    display: grid;
 }
 
 .sidebar .closebtn {

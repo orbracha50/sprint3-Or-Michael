@@ -31,33 +31,35 @@ function query(filterBy = {}) {
             if (filterBy.status) {
                 switch (filterBy.status) {
                     case 'inbox':
-                        mails = mails.filter(mail => mail.from !== loggedinUser.email)
+                        mails = mails.filter(mail => mail.from !== loggedinUser.email && mail.removeAt === null)
                         break
                     case 'draft':
-                        mails = mails.filter(mail => !mail.sentAt)
+                        mails = mails.filter(mail => mail.sentAt === null)
                         break
                     case 'trash':
-                        mails = mails.filter(mail => mail.removedAt)
+                        mails = mails.filter(mail => mail.removeAt !== null)
                         break
                     case 'sent':
-                        mails = mails.filter(mail => mail.from === loggedinUser.email)
+                        mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt !== null)
+                        break
+                        case 'stared':
+                        mails = mails.filter(mail => mail.isStared === true)
                         break
                     default:
                         break
                 }
             }
-            if (filterBy.txt) {
-                mails = mails.filter(mail => regex.test(mail.subject))
+            if (filterBy.subject) {
+                const regExp = new RegExp(filterBy.subject, 'i')
+                mails = mails.filter(mail => regExp.test(mail.subject))
             }
             if (filterBy.isRead) {
                 mails = mails.filter(mail => mail.isRead === filterBy.isRead)
             }
-            if (filterBy.isStared) {
-                mails = mails.filter(mail => mail.isStared === filterBy.isStared)
-            }
             // if (filterBy.lables) {
             //     mails = mails.filter(mail => mail.lables === filterBy.lables)
             // }
+            console.log(mails)
             return mails
         })
 }
@@ -108,8 +110,8 @@ function getFilterFromSearchParams(searchParams) {
 
 function getDefaultFilter() {
     return {
-        status: '',
-        txt: '',
+        status: 'inbox',
+        subject: '',
         isRead: null,
         isStared: null,
         lables: [],

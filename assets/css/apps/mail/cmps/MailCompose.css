@@ -1,3 +1,14 @@
+
+.compose-mail{
+  font-family: roboto, sans-serif;
+  border-radius: 15px;
+  background-color: rgb(194, 231, 255);
+  color: rgb(0, 29, 53);
+  padding: 5px;
+  border-style: none;
+  font-size: 20px;
+}
+
 .email-form {
   font-family: roboto, sans-serif;
   width: 500px;

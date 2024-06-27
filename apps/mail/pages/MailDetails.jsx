@@ -1,5 +1,6 @@
 import { mailService } from "../services/mail.service.js"
 const { useNavigate, useParams, Link, Outlet } = ReactRouterDOM
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useEffect, useState } = React
 
@@ -21,7 +22,7 @@ export function MailDetails() {
       .catch((err) => console.log("err:", err))
   }
 
-  function deleteMail(mailId) {
+  function trashMail(mailId) {
     mailService.remove(mailId)
       .then(() => {
         navigate("/mail")
@@ -52,7 +53,7 @@ export function MailDetails() {
       <span>
       <svg
       className="icon-wrap"
-        onClick={() => deleteMail(mailId)}
+        onClick={() => trashMail(mailId)}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
