@@ -180,129 +180,12 @@ function _createNotes() {
                     backgroundColor: '#00d'
                 },
                 info: {
-                    txt: 'Fullstack Me Baby!',
-                    title: 'testing'
-                }
-            },
-            {
-                id: utilService.makeId(),
-                createdAt: 1112222,
-                type: 'NoteTxt',
-                isPinned: true,
-                style: {
-                    backgroundColor: '#00d'
-                },
-                info: {
-                    txt: 'Fullstack Me Baby!',
-                    title: 'testing'
-                }
-            },
-            {
-                id: utilService.makeId(),
-                createdAt: 1112222,
-                type: 'NoteTxt',
-                isPinned: true,
-                style: {
-                    backgroundColor: '#00d'
-                },
-                info: {
-                    txt: 'Fullstack Me Baby!',
-                    title: 'testing'
-                }
-            },
-            {
-                id: utilService.makeId(),
-                createdAt: 1112222,
-                type: 'NoteTxt',
-                isPinned: true,
-                style: {
-                    backgroundColor: '#00d'
-                },
-                info: {
-                    txt: 'Fullstack Me Baby!',
+                    txt: 'To cause wrapping behavior add the property flex-wrap with a value of wrap. Now, if your items are too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width. The total width of the items is too wide for the flex container. As flex-wrap is set to wrap, the items wrap across multiple lines. If you set it to nowrap, which is the initial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit. Me Baby!',
                     title: 'testing'
                 }
             },
             {
                 id:  utilService.makeId(),
-                createdAt: 1112223,
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
-                    title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#00d'
-                }
-            },
-            {
-                id:  utilService.makeId(),
-                createdAt: 1112223,
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
-                    title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#00d'
-                }
-            },
-            {
-                id:  utilService.makeId(),
-                createdAt: 1112223,
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
-                    title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#00d'
-                }
-            },
-            {
-                id:  utilService.makeId(),
-                createdAt: 1112223,
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
-                    title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#00d'
-                }
-            },
-            {
-                id:  utilService.makeId(),
-                createdAt: 1112223,
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
-                    title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#00d'
-                }
-            },
-            {
-                id:  utilService.makeId(),
-                createdAt: 1112223,
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
-                    title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#00d'
-                }
-            },
-            {
-                id: 'n103',
                 createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: false,
@@ -313,7 +196,151 @@ function _createNotes() {
                         { txt: 'Coding power', doneAt: 187111111 }
                     ]
                 }
-            }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'To cause wrapping behavior add the property flex-wrap with a value of wrap. Now, if your items are too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width. The total width of the items is too wide for the flex container. As flex-wrap is set to wrap, the items wrap across multiple lines. If you set it to nowrap, which is the initial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit.',
+                    title: 'testing'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'To cause wrapping behavior add the property flex-wrap with a value of wrap. Now, if your items are too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width. The total width of the items is too wide for the flex container. As flex-wrap is set to wrap, the items wrap across multiple lines. If you set it to nowrap, which is the initial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit.',
+                    title: 'lorem'
+                }
+            },
+            
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112224,
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        { txt: 'Driving license', doneAt: null },
+                        { txt: 'Coding power', doneAt: 187111111 }
+                    ]
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://pixlr.com/images/index/product-image-one.webp',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112224,
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        { txt: 'Driving license', doneAt: null },
+                        { txt: 'Coding power', doneAt: 187111111 }
+                    ]
+                }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'Fullstack Me Baby!',
+                    title: 'testing'
+                }
+            },
+            {
+                id:  utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
         ]
     }
 

@@ -10,7 +10,9 @@
     -moz-box-shadow: 2px 2px 33px 3px rgba(0, 0, 0, 0.23);
     box-shadow: 2px 2px 33px 3px rgba(0, 0, 0, 0.23);
     padding: 10px;
-    width: 30vw;
+    width: 40vw;
+    margin-left: 13vw;
+    
 }
 .box-note section{
     display: flex;
@@ -35,4 +37,7 @@
 .txt-create svg:hover{
     background-color: lightgray;
     
+}
+.input-main{
+    width: 22222px;
 }

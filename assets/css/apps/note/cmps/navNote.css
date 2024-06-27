@@ -21,6 +21,7 @@
     border-radius: 10px;
     position: relative;
     transition: 0.8s;
+    cursor: pointer;
 }
 
 .note:before,
@@ -37,6 +38,7 @@
 .nav svg {
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 
 .nav li:hover {

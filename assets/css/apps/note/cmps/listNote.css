@@ -1,37 +1,42 @@
  /* note list */
  .list-container {
-    display: grid;
-    grid-auto-flow: row;
-    gap: 30px;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+   margin-top: 20px;
+   gap: 20px;
     position: absolute;
     left: 20%;
     top: 15%;
-    width: 70vw;
-
+    width: 70%;
 }
 
 .list-container input {
-    width: 30vw;
+    width:max-content;
     height: 30px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .notes {
     border-radius: 5px;
     border: 1px solid black;
-    padding: 10px;
-
+    padding: 15px;
+    width: 200px;
+    height: max-content;
+    cursor: pointer;
 }
 
 .notes h1 {
     font-size: 30px;
+    width: 200px;
+    height: max-content;
 }
 
 .notes-list {
     display: grid;
-    grid-template-columns: auto auto auto ;
-    gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-flow: dense;
+    gap: 35px;
 }
 
 .todo {

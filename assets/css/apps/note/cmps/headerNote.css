@@ -18,6 +18,8 @@
 
 .input-container{
     display: flex;
+    justify-content: center;
+    color:gray;
 }
 .search-icon{
     background-color: rgba(240, 248, 255, 0);
@@ -30,6 +32,7 @@
 .setting-icon:hover,
 .search-icon:hover {
     background-color: lightgray;
+    cursor: pointer;
 }
 
 .menu-icon,.setting-icon{
@@ -37,9 +40,4 @@
     width: 40px;
     border-radius: 50%;
     padding: 5px;
-}
-.note-header input{
-    width: 50vw;
-    height: 30px;
-    border-radius: 10px;
 }
