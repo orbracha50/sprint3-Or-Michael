@@ -73,10 +73,10 @@ export function MailPreview({ mail, trashMail, markUnread }) {
           {isStar}
           <h2>{from}</h2>
           <LongTxt txt={body} />
-          <h4>{subject}</h4>
-          <h3 className={isHovering ? "hidden" : "visible"}>
+          <h1>{subject}</h1>
+          <h1 className={isHovering ? "hidden" : "visible"}>
             {new Date(sentAt).toLocaleDateString()}
-          </h3>
+          </h1>
           <div
             onClick={(event) => disableDetails(event)}
             className={`${isHovering ? "visible" : "hidden"}`}

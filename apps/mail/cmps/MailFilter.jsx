@@ -40,9 +40,9 @@ export function MailFilter({ filterBy, onSetFilter }) {
     const {subject} = filterByToEdit
 
     return (
-        <section className="mail-filter">
+        <section>
             <form onSubmit={onSubmitFilter}>
-                <input placeholder="Search for mail" value={subject || ''} onChange={handleChange} name="subject" type="text" id="subject" />
+                <input className="mail-filter" placeholder="Search for mail" value={subject || ''} onChange={handleChange} name="subject" type="text" id="subject" />
             </form>
         </section>
     )

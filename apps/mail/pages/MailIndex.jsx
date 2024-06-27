@@ -14,7 +14,6 @@ export function MailIndex() {
 
   useEffect(() => {
     loadMails()
-    setSearchParams(filterBy)
   }, [filterBy])
 
   function loadMails() {
@@ -38,35 +37,20 @@ export function MailIndex() {
   function trashMail(mailId) {
     mailService.get(mailId).then((mail) => ({ ...mail, ["removeAt"]: Date.now() }))
       .then((mail) => mailService.save(mail))
-      setMails(mails =>
-        mails.filter(mail => mail.id !== mailId)
-    )
+      showSuccessMsg('Mail Trashed')
+      setMails(mails => mails.filter(mail => mail.id !== mailId))
   }
 
   function onSetFilter(filterBy) {
     setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }))
   }
 
-  function updateStar(mailId, isStar) {
-    console.log(mailId, isStar)
-    mailService
-      .get(mailId)
-      .then((mail) => ({ ...mail, ["isStar"]: isStar }))
-      .then((updatedMail) => {
-        mailService.save(updatedMail);
-        setMails((prevMails) =>
-          prevMails.map((mail) => (mail.id === mailId ? updatedMail : mail))
-        );
-      })
-      .catch((err) => console.error("Error updating star state:", err));
-    }
-
   if (!mails) return <div className="mail-loader"></div>
   return (
     <section className="mail-index">
       <MailFolderFilter filterBy={filterBy} onSetFilter={onSetFilter} />
       <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-      <MailList mails={mails} trashMail={trashMail} markUnread={markUnread} updateStar={updateStar} />
+      <MailList mails={mails} trashMail={trashMail} markUnread={markUnread} />
 
       <Outlet mails={mails}/>
     </section>

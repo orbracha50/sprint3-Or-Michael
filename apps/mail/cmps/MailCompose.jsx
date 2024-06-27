@@ -1,7 +1,7 @@
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
-const { useNavigate, useParams, Link, useOutletContext } = ReactRouterDOM
+const { useNavigate, useParams, Link } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailCompose() {
@@ -23,8 +23,7 @@ export function MailCompose() {
   function onSendMail(ev) {
     ev.preventDefault()
     mailToEdit.sentAt = Date.now()
-    mailService
-      .save(mailToEdit)
+    mailService.save(mailToEdit)
       .then(() => {
         navigate("/mail")
         //location.reload()
@@ -77,7 +76,7 @@ export function MailCompose() {
 
   return (
     <section className="email-form">
-      <h2>Send Email</h2>
+      <h2>Send Mail</h2>
       <form onSubmit={onSendMail}>
         <Link className="close-btn" onClick={onDraftMail} to="/mail">
           <svg
