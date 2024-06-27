@@ -1,7 +1,7 @@
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
-const { useNavigate, useParams, Link } = ReactRouterDOM
+const { useNavigate, useParams, Link, useOutletContext } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailCompose() {

@@ -1,12 +1,8 @@
-export function DisplayIcons({ id, deleteMail, markUnread }) {
-    function log() {
-        console.log('Clicked!')
-    }
+export function DisplayIcons({ id, trashMail, markUnread }) {
   return (
     <ul className="icons">
       <svg
       className="icon-wrap"
-        onClick={log}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
@@ -17,7 +13,7 @@ export function DisplayIcons({ id, deleteMail, markUnread }) {
       </svg>
       <svg
       className="icon-wrap"
-        onClick={() => deleteMail(id)}
+        onClick={() => trashMail(id)}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
@@ -28,7 +24,7 @@ export function DisplayIcons({ id, deleteMail, markUnread }) {
       </svg>
       <svg
       className="icon-wrap"
-        onClick={() => markUnread()}
+        onClick={() => markUnread(id)}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"

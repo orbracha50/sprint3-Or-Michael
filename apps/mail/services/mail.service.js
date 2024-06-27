@@ -31,16 +31,19 @@ function query(filterBy = {}) {
             if (filterBy.status) {
                 switch (filterBy.status) {
                     case 'inbox':
-                        mails = mails.filter(mail => mail.from !== loggedinUser.email)
+                        mails = mails.filter(mail => mail.from !== loggedinUser.email && mail.removeAt === null)
                         break
                     case 'draft':
                         mails = mails.filter(mail => mail.sentAt === null)
                         break
                     case 'trash':
-                        mails = mails.filter(mail => mail.removedAt)
+                        mails = mails.filter(mail => mail.removeAt !== null)
                         break
                     case 'sent':
                         mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt !== null)
+                        break
+                        case 'stared':
+                        mails = mails.filter(mail => mail.isStared === true)
                         break
                     default:
                         break
@@ -52,9 +55,6 @@ function query(filterBy = {}) {
             }
             if (filterBy.isRead) {
                 mails = mails.filter(mail => mail.isRead === filterBy.isRead)
-            }
-            if (filterBy.isStared) {
-                mails = mails.filter(mail => mail.isStared === filterBy.isStared)
             }
             // if (filterBy.lables) {
             //     mails = mails.filter(mail => mail.lables === filterBy.lables)

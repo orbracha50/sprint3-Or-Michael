@@ -36,7 +36,9 @@ export function MailFilter({ filterBy, onSetFilter }) {
         ev.preventDefault()
         onSetFilter(filterByToEdit)
     }
+    
     const {subject} = filterByToEdit
+
     return (
         <section className="mail-filter">
             <form onSubmit={onSubmitFilter}>
