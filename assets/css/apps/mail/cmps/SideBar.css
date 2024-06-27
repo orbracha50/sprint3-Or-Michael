@@ -30,20 +30,22 @@
     border-radius: 50%;
 }
 
-.sidebar svg:hover {
+.sidebar div {
+    display: flex; 
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.sidebar div:hover {
     background-color: rgba(0, 0, 0, .15);
     cursor: pointer;
 }
 
-.siderbar-componenets {
-    display: grid;
-}
-
-.sidebar .closebtn {
+.closebtn {
     position: absolute;
     top: 0;
-    right: 20px;
-    font-size: 36px;
+    right: 0;
+    font-size: 12px;
     color: black;
     cursor: pointer;
 }

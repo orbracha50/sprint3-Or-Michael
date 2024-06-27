@@ -64,11 +64,12 @@ export function MailDetails() {
       </svg>
       </span>
       <section className="mail-header">
-      <h1>{mail.subject}</h1>
-      <h2>{mail.from}</h2>
+      <h1>Subject: {mail.subject}</h1>
+      <h2>From: {mail.from}</h2>
       </section>
       <section className="mail-body">
-        <h1>{mail.to}</h1>
+        <h2>To: {mail.to}</h2>
+        <hr></hr>
         <p>{mail.body}</p>
       </section>
     </section>

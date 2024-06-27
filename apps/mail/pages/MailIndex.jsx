@@ -37,9 +37,8 @@ export function MailIndex() {
   function trashMail(mailId) {
     mailService.get(mailId).then((mail) => ({ ...mail, ["removeAt"]: Date.now() }))
       .then((mail) => mailService.save(mail))
-      setMails(mails =>
-        mails.filter(mail => mail.id !== mailId)
-    )
+      showSuccessMsg('Mail Trashed')
+      setMails(mails => mails.filter(mail => mail.id !== mailId))
   }
 
   function onSetFilter(filterBy) {
