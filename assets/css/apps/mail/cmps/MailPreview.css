@@ -1,0 +1,29 @@
+.mail-preview {
+    font-family: roboto, sans-serif;
+    font-size: 1em;
+    border-bottom: 1px solid transparent;
+}
+
+.mail-preview:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(100, 121, 143, 1) 1px 1px 1px 1px;
+}
+
+.mail-preview .mail-container {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.mail-preview .mail-container h2 {
+    justify-content: space-between;
+    margin: 0;
+    flex-grow: 1;
+    pointer-events: none;
+}
+
+.mail-preview .mail-container p {
+    color: rgba(32, 33, 36, 0.6);
+}

@@ -2,18 +2,22 @@
 
 .icons{
   list-style: none;
-  color: rgba(32, 33, 36);
   display: flex;
-  gap: 5px;
+  gap: 7px;
+}
+
+.icons:hover {
+  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
 }
 
 .mail-list {
+  font-family: roboto, sans-serif;
   list-style: none;
 }
 
 .mail-container.read {
   background-color: rgba(242, 246, 252, 1);
-  box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+  box-shadow: rgba(100, 121, 143, 0.15) 0px -1px 0px 0px inset;
   color: rgba(32, 33, 36, 0.6);
 }
 
@@ -21,7 +25,7 @@
   display: flex;
   flex-grow: 1;
   gap: 50px;
-  padding: 10px;
+  padding: 20px;
   justify-content: space-between;
   background-color: white;
   color: rgba(32, 33, 36);
@@ -37,7 +41,7 @@
    margin-left: 200px;
    margin-right: 50px;
    flex-grow: 1;
-   padding: 20px;
+   padding: 0px;
    box-sizing: border-box;
    transition: margin-left 0.5s;
    transition: margin-right 0.5s;

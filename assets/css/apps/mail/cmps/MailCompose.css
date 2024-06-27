@@ -1,66 +1,68 @@
 .email-form {
-    width: 500px;
-    border: 1px solid #ddd;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
-  }
-  
-  .email-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .email-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .email-form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 15px;
-  }
-  
-  .email-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .submit-btn {
-    background-color: rgb(11, 87, 208);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer; 
-    bottom: 10px;
-  }
-  
-  .submit-btn:hover {
-    box-shadow: rgba(26, 115, 232, 0.3) 0px 1px 2px 0px, rgba(26, 115, 232, 0.15) 0px 1px 3px 1px;
-  }
+  font-family: roboto, sans-serif;
+  width: 500px;
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+}
 
-  .close-btn {
-    background-color: transparent; /* Make background transparent */
-    border: none; /* Remove borders */
-    color: #ccc; /* Set close button text color */
-    font-size: 18px; /* Adjust font size for "X" */
-    font-weight: bold; /* Make "X" bold */
-    cursor: pointer; /* Set cursor to pointer on hover */
-    position: absolute; /* Absolute positioning for close button */
-    top: 10px; /* Position 10px from the top */
-    right: 10px; /* Position 10px from the right */
-  }
-  
-  .close-btn:hover {
-    color: #999; /* Change color on hover */
-  }
+.email-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.email-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.email-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.email-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.submit-btn {
+  background-color: rgb(11, 87, 208);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  bottom: 10px;
+}
+
+.submit-btn:hover {
+  box-shadow: rgba(26, 115, 232, 0.3) 0px 1px 2px 0px,
+    rgba(26, 115, 232, 0.15) 0px 1px 3px 1px;
+}
+
+.close-btn {
+  background-color: transparent; 
+  border: none; 
+  color: #ccc; 
+  font-size: 18px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
+}
+
+.close-btn:hover {
+  color: #999; 
+}
