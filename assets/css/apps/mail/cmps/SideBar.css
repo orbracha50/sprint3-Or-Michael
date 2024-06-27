@@ -1,7 +1,7 @@
 .sidebar {
     font-family: roboto, sans-serif;
     width: 0;
-    background-color: #f1f3f4;
+    background-color: rgb(246, 248, 252);
     height: 100vh;
     box-sizing: border-box;
     position: fixed;

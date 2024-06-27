@@ -1,0 +1,35 @@
+.mail-details {
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+.mail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.mail-details h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.email-header .options {
+  cursor: pointer;
+}
+
+/* Body Styles */
+.mail-body {
+  padding: 20px 0;
+}
+
+.mail-body p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
