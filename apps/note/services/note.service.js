@@ -17,7 +17,8 @@ export const NoteService = {
     setFilterBy,
     getFilterFromSearchParams,
     getGenerStats,
-    getPriceStats
+    getPriceStats,
+    loadImageFromInput
 }
 
 function query(filterBy = {}) {
@@ -153,6 +154,17 @@ function getNextBookId(bookId) {
             if (nextBookIdx === books.length) nextBookIdx = 0
             return books[nextBookIdx].id
         })
+}
+function loadImageFromInput(imgUrl) {
+    console.log(imgUrl)
+    const reader = new FileReader()
+    
+    reader.onload = function (event) {
+        let img = new Image()
+        img.src = event.target.result
+        img.onload = () => onImageReady(img)
+    }
+    reader.readAsDataURL(ev.target.files[0])
 }
 
 function _createNotes() {

@@ -6,10 +6,16 @@ const { useEffect, useState } = React
 export function NoteList() {
     const [notes, setNotes] = useState()
     const [typeNote, setTypeNote] = useState(null)
+
+    
+    // URL to your image
+
+
     useEffect(() => {
         loadNotes()
         /* setSearchParams(filterBy) */
     }, [notes])
+
 
     function loadNotes() {
         NoteService.query()
@@ -18,8 +24,8 @@ export function NoteList() {
                 console.log('err:', err)
             })
     }
-    
-    function addNotetxt( title,txt) {
+
+    function addNotetxt(title, txt) {
         const note = {
             createdAt: Date.now(),
             type: 'NoteTxt',
@@ -32,25 +38,54 @@ export function NoteList() {
                 title: title
             }
         }
-        NoteService.save(note).then(
-
-        )
-
+        setTypeNote(null)
+        NoteService.save(note)
         console.log(note)
     }
     function removeNote(note) {
         const noteId = note.id
         NoteService.remove(noteId)
-        .then(() => {
-            setNotes(notes =>
-                notes.filter(note => note.id !== noteId)
-            )
-            /* showSuccessMsg(`Car (${noteId}) removed successfully!`) */
-        })
-        .catch(err => {
-            console.log('Problems removing car:', err)
-            /* showErrorMsg(`Having problems removing car!`) */
-        })
+            .then(() => {
+                setNotes(notes =>
+                    notes.filter(note => note.id !== noteId)
+                )
+                /* showSuccessMsg(`Car (${noteId}) removed successfully!`) */
+            })
+            .catch(err => {
+                console.log('Problems removing car:', err)
+                /* showErrorMsg(`Having problems removing car!`) */
+            })
+    }
+    function addNoteImage(title, img) {
+        const note = {
+            createdAt: Date.now(),
+            type: 'NoteImg',
+            isPinned: false,
+            info: {
+                url: img,
+                title: title
+            },
+            style: {
+                backgroundColor: '#00d'
+            }
+        }
+        setTypeNote(null)
+        NoteService.save(note)
+    }
+    function addNoteTodos(todos,title){
+        todos.shift()
+        const note = {
+            createdAt:Date.now() ,
+            type: 'NoteTodos',
+            isPinned: false,
+            info: {
+                title: title.title,
+                todos: todos.map(todo => ({txt: todo, doneAt:null}))
+            }
+        }
+        setTypeNote(null)
+        console.log(note)
+        NoteService.save(note)
     }
     if (notes === undefined) return
     return <section className="list-container">
@@ -62,7 +97,7 @@ export function NoteList() {
                 <svg onClick={() => setTypeNote('image')} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90-120-120 160Zm-40 80v-560 560Z" /></svg>
             </section>
         </div>}
-        {typeNote !== null && <NoteAdd type={typeNote} addNotetxt={addNotetxt} />}
+        {typeNote !== null && <NoteAdd setTypeNote={setTypeNote} type={typeNote} addNoteTodos={addNoteTodos} addNotetxt={addNotetxt} addNoteImage={addNoteImage} />}
         <section className="notes-list">
             {notes.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} />)}
         </section>
