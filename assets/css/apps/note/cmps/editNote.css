@@ -1,6 +1,7 @@
 .box-note {
     display: flex;
     align-items: center;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
     border: 1px solid black;
@@ -9,6 +10,7 @@
     -moz-box-shadow: 2px 2px 33px 3px rgba(0, 0, 0, 0.23);
     box-shadow: 2px 2px 33px 3px rgba(0, 0, 0, 0.23);
     padding: 10px;
+    width: 30vw;
 }
 .box-note section{
     display: flex;
@@ -17,8 +19,20 @@
 .box-note section svg{
     border-radius: 50%;
     padding: 5px;
-
 }
 .box-note section svg:hover{
     background-color: lightgray;
+}
+.txt-create{
+    display: grid;
+    grid-auto-flow: row;
+    width: max-content;
+}
+.txt-create svg{
+    border-radius: 50%;
+    padding: 3px;
+}
+.txt-create svg:hover{
+    background-color: lightgray;
+    
 }

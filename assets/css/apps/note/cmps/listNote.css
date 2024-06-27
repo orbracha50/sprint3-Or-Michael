@@ -3,14 +3,16 @@
     display: grid;
     grid-auto-flow: row;
     gap: 30px;
+    justify-items: center;
     position: absolute;
-    left: 29%;
+    left: 20%;
     top: 15%;
-    width: 50vw;
+    width: 70vw;
+
 }
 
 .list-container input {
-    width: 100%;
+    width: 30vw;
     height: 30px;
     border-radius: 10px;
 }
@@ -28,7 +30,8 @@
 
 .notes-list {
     display: grid;
-    gap: 20px;
+    grid-template-columns: auto auto auto ;
+    gap: 50px;
 }
 
 .todo {
@@ -43,4 +46,7 @@
 
 ul {
     padding: 0;
+}
+.notes-list section{
+    
 }

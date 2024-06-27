@@ -2,11 +2,13 @@ import { NoteService } from "../services/note.service.js"
 import { NoteAdd } from "./NoteAdd.jsx"
 import { NotePreview } from "./NotePreview.jsx"
 import { utilService } from "../../../services/util.service.js"
+import { AppHeaderNote } from "./AppHeaderNote.jsx"
+import { NoteFilter } from "./NoteFilter.jsx"
 const { useEffect, useState } = React
 export function NoteList() {
     const [notes, setNotes] = useState()
     const [typeNote, setTypeNote] = useState(null)
-
+    const [filterBy, setFilterBy] = useState({filterBy:''})
     
     // URL to your image
 
@@ -14,11 +16,11 @@ export function NoteList() {
     useEffect(() => {
         loadNotes()
         /* setSearchParams(filterBy) */
-    }, [notes])
+    }, [filterBy])
 
 
     function loadNotes() {
-        NoteService.query()
+        NoteService.query(filterBy)
             .then(notes => setNotes(notes))
             .catch(err => {
                 console.log('err:', err)
@@ -39,8 +41,8 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
+        setNotes(prevNotes => [...prevNotes,note])
         NoteService.save(note)
-        console.log(note)
     }
     function removeNote(note) {
         const noteId = note.id
@@ -70,6 +72,7 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
+        setNotes(prevNotes => [...prevNotes,note])
         NoteService.save(note)
     }
     function addNoteTodos(todos,title){
@@ -84,11 +87,16 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
-        console.log(note)
+        setNotes(prevNotes => [...prevNotes,note])
         NoteService.save(note)
     }
+    function onSetFilter(filterBy) {
+        setFilterBy({ ...filterBy })
+    }
+
     if (notes === undefined) return
     return <section className="list-container">
+        <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter}/>
         {typeNote === null && <div className="box-note">
             <h3 onClick={() => setTypeNote('text')}>Take a note.... </h3>
             <section>
@@ -99,7 +107,7 @@ export function NoteList() {
         </div>}
         {typeNote !== null && <NoteAdd setTypeNote={setTypeNote} type={typeNote} addNoteTodos={addNoteTodos} addNotetxt={addNotetxt} addNoteImage={addNoteImage} />}
         <section className="notes-list">
-            {notes.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} />)}
+            {notes.map((note) => <NotePreview key={note.id} note={note}  removeNote={removeNote} />)}
         </section>
     </section>
 }

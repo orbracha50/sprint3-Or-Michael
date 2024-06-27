@@ -22,17 +22,17 @@ export const NoteService = {
 }
 
 function query(filterBy = {}) {
+
     return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
-         
-            if (filterBy.txt) {
-
-                const regex = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(book => regex.test(book.title))
+            if (filterBy.filterBy==='Text') {
+                notes = notes.filter(note => note.type === 'NoteTxt')
             }
-            if (filterBy.price) {
-                console.log(notes)
-                notes = notes.filter(book => book.listPrice.amount >= filterBy.price)
+            if (filterBy.filterBy==='todos') {
+                notes = notes.filter(note => note.type === 'NoteTodos')
+            }
+            if (filterBy.filterBy==='image') {
+                notes = notes.filter(note => note.type === 'NoteImg')
             }
             return notes
         })
