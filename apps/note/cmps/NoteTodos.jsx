@@ -9,7 +9,7 @@ export function NodeTodos({ note, removeNote }) {
         target.classList.toggle('done')
         note.info.todos.forEach(todo => {
             if (todo.txt === txt && todo.doneAt === null) {
-                todo.doneAt = utilService.getDayName(Date.now())
+                todo.doneAt = Date.now()
             } else {
                 if (todo.txt === txt && todo.doneAt !== null) {
                     todo.doneAt = null
