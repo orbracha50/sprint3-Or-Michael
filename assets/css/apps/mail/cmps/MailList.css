@@ -25,7 +25,7 @@
   display: flex;
   flex-grow: 1;
   gap: 50px;
-  padding: 10px;
+  padding: 20px;
   justify-content: space-between;
   background-color: white;
   color: rgba(32, 33, 36);
@@ -41,7 +41,7 @@
    margin-left: 200px;
    margin-right: 50px;
    flex-grow: 1;
-   padding: 20px;
+   padding: 0px;
    box-sizing: border-box;
    transition: margin-left 0.5s;
    transition: margin-right 0.5s;

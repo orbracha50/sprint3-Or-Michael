@@ -28,10 +28,24 @@ export const mailService = {
 function query(filterBy = {}) {
     return asyncStorageService.query(MAIL_KEY)
         .then(mails => {
-            // if (filterBy.status) {
-            //     const regex = new RegExp(filterBy.status, 'i')
-            //     mails = mails.filter(mail => regex.test(mail.title))
-            // }
+            if (filterBy.status) {
+                switch (filterBy.status) {
+                    case 'inbox':
+                        mails = mails.filter(mail => mail.from !== loggedinUser.email)
+                        break
+                    case 'draft':
+                        mails = mails.filter(mail => !mail.sentAt)
+                        break
+                    case 'trash':
+                        mails = mails.filter(mail => mail.removedAt)
+                        break
+                    case 'sent':
+                        mails = mails.filter(mail => mail.from === loggedinUser.email)
+                        break
+                    default:
+                        break
+                }
+            }
             if (filterBy.txt) {
                 mails = mails.filter(mail => regex.test(mail.subject))
             }
@@ -141,7 +155,7 @@ function _createEmails() {
                 id: utilService.makeId(),
                 subject: utilService.makeLorem(3),
                 body: utilService.makeLorem(50),
-                isRead: null,
+                isRead: true,
                 isStared: Math.random() > 0.7,
                 sentAt: Date.now(),
                 removeAt: null,
