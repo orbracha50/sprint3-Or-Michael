@@ -2,7 +2,7 @@ import { NoteBar } from "./NoteBar.jsx";
 
 const { useEffect, useState } = React
 export function NoteTxt({ note, removeNote }) {
-    const [noteToEdit, setNoteToEdit] = useState({ title: note.info.title, main: note.info.txt })
+    const [noteToEdit, setNoteToEdit] = useState({ title: note.info.title, main: note.info.txt ,backgroundColor: note.style.bachgroundColor })
     const [toEdit, setToEdit] = useState('false')
 
     function editNote() {
@@ -29,12 +29,16 @@ export function NoteTxt({ note, removeNote }) {
 
     }
     function saveEditNote(){
+        console.log(noteToEdit)
         note.info.title = noteToEdit.title
         note.info.txt = noteToEdit.main
+        note.style.backgroundColor = (noteToEdit.backgroundColor!== undefined)? noteToEdit.backgroundColor : note.style.backgroundColor
+        console.log(noteToEdit)
         setToEdit('false')
     }
+    
     return <section>
-        {toEdit === 'false' && <div className='notes' style={note.style} onClick={editNote}><h1>{note.info.title}</h1> <p>{note.info.txt}</p> <NoteBar note={note} removeNote={removeNote} /> </div>}
+        {toEdit === 'false' && <div className='notes' style={note.style} ><h1 onClick={editNote}>{note.info.title}</h1> <p onClick={editNote}>{note.info.txt}</p> <NoteBar note={note} removeNote={removeNote} saveEditNote={saveEditNote} setNoteToEdit={setNoteToEdit} /> </div>}
         {toEdit === 'true' &&
             <div className='notes' style={note.style}>
                 <input onChange={handleChange} key={note.info.title} value={noteToEdit.title} className='title' type="text" name="title" id="" placeholder="Title..." />

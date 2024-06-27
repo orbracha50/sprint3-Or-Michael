@@ -107,7 +107,7 @@ export function NoteList() {
         </div>}
         {typeNote !== null && <NoteAdd setTypeNote={setTypeNote} type={typeNote} addNoteTodos={addNoteTodos} addNotetxt={addNotetxt} addNoteImage={addNoteImage} />}
         <section className="notes-list">
-            {notes.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} />)}
+            {notes.map((note) => <NotePreview key={note.id} note={note}  removeNote={removeNote} />)}
         </section>
     </section>
 }

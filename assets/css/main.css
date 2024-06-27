@@ -18,6 +18,8 @@
 @import url(apps/note/cmps/editNote.css);
 @import url(apps/note/cmps/listNote.css);
 @import url(apps/note/cmps/prevNote.css);
+@import url(apps/note/cmps/colorBar.css);
+@import url(apps/note/cmps/noteBar.css);
 /* @import './apps/mail/pages/MailIndex.css'; */
 
 /* Cmps */
