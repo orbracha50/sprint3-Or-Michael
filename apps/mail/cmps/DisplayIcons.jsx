@@ -5,6 +5,7 @@ export function DisplayIcons({ id, deleteMail, markUnread }) {
   return (
     <ul className="icons">
       <svg
+      className="icon-wrap"
         onClick={log}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -15,6 +16,7 @@ export function DisplayIcons({ id, deleteMail, markUnread }) {
         <path d="m640-280-57-56 184-184-184-184 57-56 240 240-240 240ZM80-200v-160q0-83 58.5-141.5T280-560h247L383-704l57-56 240 240-240 240-57-56 144-144H280q-50 0-85 35t-35 85v160H80Z" />
       </svg>
       <svg
+      className="icon-wrap"
         onClick={() => deleteMail(id)}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -25,6 +27,7 @@ export function DisplayIcons({ id, deleteMail, markUnread }) {
         <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
       </svg>
       <svg
+      className="icon-wrap"
         onClick={() => markUnread()}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
