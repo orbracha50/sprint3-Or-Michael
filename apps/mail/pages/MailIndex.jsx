@@ -15,6 +15,7 @@ export function MailIndex() {
   const [onComposeMail, setOnComposeMail] = useState(false)
 
   useEffect(() => {
+    setSearchParams(filterBy)
     loadMails()
   }, [filterBy])
 
@@ -45,10 +46,14 @@ export function MailIndex() {
     setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }))
   }
 
+  function onSetComposeMail() {
+    setOnComposeMail(onComposeMail => !onComposeMail)
+  }
+
   if (!mails) return <div className="mail-loader"></div>
   return (
     <section className="mail-index">
-      <MailFolderFilter filterBy={filterBy} onSetFilter={onSetFilter} onComposeMail={onComposeMail}/>
+      <MailFolderFilter filterBy={filterBy} onSetFilter={onSetFilter} onComposeMail={onComposeMail} onSetComposeMail={onSetComposeMail}/>
       <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
       <MailList mails={mails} onTrashMail={onTrashMail} filterBy={filterBy} />
       {onComposeMail ? <MailCompose mails={mails} setMails={setMails} /> : null}

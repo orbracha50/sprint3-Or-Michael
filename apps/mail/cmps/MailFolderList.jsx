@@ -2,7 +2,7 @@ import { utilService } from "../../../services/util.service.js"
 
 const { useState, useEffect, useRef } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
-export function MailFolderFilter({ filterBy, onSetFilter }) {
+export function MailFolderFilter({ filterBy, onSetFilter, onComposeMail ,setOnComposeMail }) {
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
   const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 700))
 

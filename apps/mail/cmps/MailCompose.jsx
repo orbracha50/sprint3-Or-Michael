@@ -4,7 +4,7 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 const { useNavigate, useParams, Link } = ReactRouterDOM
 const { useState, useEffect } = React
 
-export function MailCompose() {
+export function MailCompose({onSetComposeMail, }) {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyEmail())
   const mailId = null
 
