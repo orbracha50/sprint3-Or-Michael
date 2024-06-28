@@ -1,7 +1,7 @@
 const { useState, useEffect } = React
 import { NoteService } from "../services/note.service.js"
 import { utilService } from "../../../services/util.service.js"
-export function NoteAdd({ type, addNotetxt, setTypeNote, addNoteImage, addNoteTodos }) {
+export function NoteAdd({ type, addNotetxt, setTypeNote, addNoteImage, addNoteTodos, setPinned}) {
     const [note, setNote] = useState(null)
     const [todoTitle, setTodoTitle] = useState(null)
     const [todos, setTodos] = useState([''])

@@ -1,7 +1,7 @@
 import { NoteService } from "../services/note.service.js";
 import { NoteBar } from "./NoteBar.jsx";
 const { useEffect, useState } = React
-export function NodeTodos({ note, removeNote }) {
+export function NodeTodos({ note, removeNote, setPinned}) {
     const [noteToEdit, setNoteToEdit] = useState({ title: note.info.title, main: note.info.txt })
     const [toEdit, setToEdit] = useState('false')
     function toggleTodo({ target }, todo) {
@@ -22,12 +22,12 @@ export function NodeTodos({ note, removeNote }) {
         NoteService.save(note)
     }
     return <section>
-        {<div className='notes' style={note.style}>
+        {<div className={(note.isPinned=== true)? 'notes pinned': 'notes'}>
             <h1>{note.info.title}</h1>
             <ul >
                 {note.info.todos.map(todo => <div className="todo" key={todo.txt}><button className={`btn-todo ${(todo.doneAt !== null) ? 'done' : ''}`} onClick={(ev) => toggleTodo(ev, todo.txt)}></button><li>{todo.txt}</li></div>)}
             </ul>
-            <NoteBar note={note} removeNote={removeNote} /></div>}
+            <NoteBar note={note} removeNote={removeNote} setPinned={setPinned}/></div>}
 
     </section>
 

@@ -6,7 +6,8 @@ import { AppHeaderNote } from "./AppHeaderNote.jsx"
 import { NoteFilter } from "./NoteFilter.jsx"
 const { useEffect, useState } = React
 export function NoteList() {
-    const [notes, setNotes] = useState()
+    const [notesAll, setNotesAll] = useState()
+    const [notesOther, setNotesOther] = useState()
     const [typeNote, setTypeNote] = useState(null)
     const [filterBy, setFilterBy] = useState({ filterBy: '' })
     const [notesPinned, setNotesPinned] = useState()
@@ -21,10 +22,11 @@ export function NoteList() {
     function loadNotes() {
         NoteService.query(filterBy)
             .then(notesS => {
-                setNotes(notesS.filter((note) => note.isPinned === false))
+                setNotesAll(notesS)
+                setNotesOther(notesS.filter((note) => note.isPinned === false))
                 setNotesPinned(notesS.filter((note) => note.isPinned === true))
                 console.log(notesPinned)
-                console.log(notes)
+                console.log(notesOther)
             })
             .catch(err => {
                 console.log('err:', err)
@@ -45,7 +47,7 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
-        setNotes(prevNotes => [...prevNotes, note])
+        setNotesOther(prevNotes => [...prevNotes, note])
         NoteService.save(note)
     }
     function removeNote(note) {
@@ -76,7 +78,7 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
-        setNotes(prevNotes => [...prevNotes, note])
+        setNotesOther(prevNotes => [...prevNotes, note])
         NoteService.save(note)
     }
     function addNoteTodos(todos, title) {
@@ -91,11 +93,23 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
-        setNotes(prevNotes => [...prevNotes, note])
+        setNotesOther(prevNotes => [...prevNotes, note])
         NoteService.save(note)
     }
     function onSetFilter(filterBy) {
         setFilterBy({ ...filterBy })
+    }
+    function setPinned(noteTo) {
+        if (noteTo.isPinned === true) {
+            noteTo.isPinned = false
+            setNotesOther(notesAll.filter((note) => note.isPinned === false))
+            setNotesPinned(notesAll.filter((note) => note.isPinned === true))
+        } else {
+            noteTo.isPinned = true
+            setNotesOther(notesAll.filter((note) => note.isPinned === false))
+            setNotesPinned(notesAll.filter((note) => note.isPinned === true))
+        }
+        NoteService.save(noteTo)
     }
 
     if (notesPinned === undefined) return
@@ -110,12 +124,15 @@ export function NoteList() {
             </section>
         </div>}
         {typeNote !== null && <NoteAdd setTypeNote={setTypeNote} type={typeNote} addNoteTodos={addNoteTodos} addNotetxt={addNotetxt} addNoteImage={addNoteImage} />}
-        {<section className="notes-list">
-            {notesPinned.length > 0 && <h1>Pinned</h1>}
-            {notesPinned.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} />)}
+        {notesPinned.length > 0 && <section>
+            <h1>PINNED</h1>
+            <section className="notes-list">
+                {notesPinned.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} setPinned={setPinned} />)}
+            </section>
         </section>}
+        <h1>Others</h1>
         <section className="notes-list">
-            {notes.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} />)}
+            {notesOther.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} setPinned={setPinned} />)}
         </section>
     </section>
 }

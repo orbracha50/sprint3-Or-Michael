@@ -1,7 +1,7 @@
 import { NoteBar } from "./NoteBar.jsx";
 import { NoteService } from "../services/note.service.js";
 const { useEffect, useState } = React
-export function NoteTxt({ note, removeNote }) {
+export function NoteTxt({ note, removeNote,setPinned}) {
     const [noteToEdit, setNoteToEdit] = useState({ title: note.info.title, main: note.info.txt ,backgroundColor: note.style.bachgroundColor })
     const [toEdit, setToEdit] = useState('false')
     const[notes,setNote] = useState(note)
@@ -44,7 +44,7 @@ export function NoteTxt({ note, removeNote }) {
     }
     
     return <section>
-        {toEdit === 'false' && <div className={(note.isPinned=== true)? 'notes pinned': 'notes'}  style={note.style} ><h1 onClick={editNote}>{note.info.title}</h1> <p onClick={editNote}>{note.info.txt}</p> <NoteBar note={note} removeNote={removeNote} saveEditNote={saveEditNote} setNoteToEdit={setNoteToEdit} /> </div>}
+        {toEdit === 'false' && <div className={(note.isPinned=== true)? 'notes pinned': 'notes'}  style={note.style} ><h1 onClick={editNote}>{note.info.title}</h1> <p onClick={editNote}>{note.info.txt}</p> <NoteBar setPinned={setPinned} note={note} removeNote={removeNote} saveEditNote={saveEditNote} setNoteToEdit={setNoteToEdit} /> </div>}
         {toEdit === 'true' &&
             <div className='notes' style={note.style}>
                 <textarea  onChange={handleChange} key={note.info.title} value={noteToEdit.title} rows="2" className='title' type="text" name="title" id="" placeholder="Title..." ></textarea>
