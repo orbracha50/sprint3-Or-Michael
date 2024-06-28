@@ -11,12 +11,8 @@ export const NoteService = {
     get,
     remove,
     save,
-    getNextBookId,
-    getEmptyBook,
     getFilterBy,
     getFilterFromSearchParams,
-    getGenerStats,
-    getPriceStats,
     loadImageFromInput
 }
 
@@ -67,86 +63,12 @@ function getFilterFromSearchParams(searchParams) {
     }
     return filterBy
 }
-function getPriceStats() {
-    return storageService.query(BOOK_KEY)
-        .then(books => {
-            const bookCountByPriceMap = _getBookCountByPriceMap(books)
-            console.log(bookCountByPriceMap)
-            const data = Object.keys(bookCountByPriceMap).map(priceName => ({ title: priceName, value: Math.round((bookCountByPriceMap[priceName] / bookCountByPriceMap.all) * 100) }))
-            return data
-        })
-
-}
-
-function getGenerStats() {
-    return storageService.query(BOOK_KEY)
-        .then(books => {
-            const bookCountByGenerMap = _getBookCountByGenerMap(books)
-            const data = Object.keys(bookCountByGenerMap)
-                .map(gener =>
-                ({
-                    title: gener,
-                    value: Math.round((bookCountByGenerMap[gener] / books.length) * 100)
-                }))
-            return data
-        })
-}
-function _getBookCountByPriceMap(books) {
-    const carCountBySpeedMap = books.reduce((map, book) => {
-        if (book.amount < 40) {
-            map.cheap++
-            map.all++
-        }
-        else if (book.amount < 70) {
-            map.all++
-            map.regular++
-        } else {
-            map.expensive++
-            map.all++
-        }
-        return map
-    }, { cheap: 0, regular: 0, expensive: 0, all: 0 })
-    return carCountBySpeedMap
-}
-
-function _getBookCountByGenerMap(books) {
-    const carCountByVendorMap = books.reduce((map, book) => {
-        if (!map[book.gener]) map[book.gener] = 0
-        map[book.gener]++
-        return map
-    }, {})
-    return carCountByVendorMap
-}
-function getEmptyBook() {
-    return {
-        id: "",
-        title: "",
-        description: '',
-        pageCount: 0,
-        thumbnail: "",
-        amount: 10,
-        reviews: [],
-        listPrice: {
-            currencyCode: "",
-            isOnSale: false
-        }
-    }
-
-}
 
 function getFilterBy() {
     return { ...filterBy }
 }
 
 
-function getNextBookId(bookId) {
-    return storageService.query(BOOK_KEY)
-        .then(books => {
-            let nextBookIdx = books.findIndex(car => car.id === bookId) + 1
-            if (nextBookIdx === books.length) nextBookIdx = 0
-            return books[nextBookIdx].id
-        })
-}
 function loadImageFromInput(imgUrl) {
     console.log(imgUrl)
     const reader = new FileReader()
@@ -220,7 +142,7 @@ function _createNotes() {
                 id:  utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
-                isPinned: false,
+                isPinned: true,
                 info: {
                     url: 'https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630',
                     title: 'Bobi and Me'
@@ -246,7 +168,7 @@ function _createNotes() {
                 id:  utilService.makeId(),
                 createdAt: 1112224,
                 type: 'NoteTodos',
-                isPinned: false,
+                isPinned: true,
                 info: {
                     title: 'Get my stuff together',
                     todos: [
