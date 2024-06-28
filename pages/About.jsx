@@ -4,7 +4,7 @@ export function About() {
       <h1>About Us</h1>
 
       <div className="profile-card">
-        <img className="developer-image" src="./assets/img/default-user-img.png" alt="or-image"></img>
+        <img className="developer-image" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="or-image"></img>
         <div className="developer-info">
           <h1>Information About Or:</h1>
           <p>I'm the developer of the Keep app which is mimiced from Google
