@@ -8,10 +8,9 @@ const { useEffect, useState } = React
 export function NoteList() {
     const [notes, setNotes] = useState()
     const [typeNote, setTypeNote] = useState(null)
-    const [filterBy, setFilterBy] = useState({filterBy:''})
-    
+    const [filterBy, setFilterBy] = useState({ filterBy: '' })
+    const [notesPinned, setNotesPinned] = useState()
     // URL to your image
-
 
     useEffect(() => {
         loadNotes()
@@ -21,7 +20,12 @@ export function NoteList() {
 
     function loadNotes() {
         NoteService.query(filterBy)
-            .then(notes => setNotes(notes))
+            .then(notesS => {
+                setNotes(notesS.filter((note) => note.isPinned === false))
+                setNotesPinned(notesS.filter((note) => note.isPinned === true))
+                console.log(notesPinned)
+                console.log(notes)
+            })
             .catch(err => {
                 console.log('err:', err)
             })
@@ -41,7 +45,7 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
-        setNotes(prevNotes => [...prevNotes,note])
+        setNotes(prevNotes => [...prevNotes, note])
         NoteService.save(note)
     }
     function removeNote(note) {
@@ -72,31 +76,31 @@ export function NoteList() {
             }
         }
         setTypeNote(null)
-        setNotes(prevNotes => [...prevNotes,note])
+        setNotes(prevNotes => [...prevNotes, note])
         NoteService.save(note)
     }
-    function addNoteTodos(todos,title){
+    function addNoteTodos(todos, title) {
         todos.shift()
         const note = {
-            createdAt:Date.now() ,
+            createdAt: Date.now(),
             type: 'NoteTodos',
             isPinned: false,
             info: {
                 title: title.title,
-                todos: todos.map(todo => ({txt: todo, doneAt:null}))
+                todos: todos.map(todo => ({ txt: todo, doneAt: null }))
             }
         }
         setTypeNote(null)
-        setNotes(prevNotes => [...prevNotes,note])
+        setNotes(prevNotes => [...prevNotes, note])
         NoteService.save(note)
     }
     function onSetFilter(filterBy) {
         setFilterBy({ ...filterBy })
     }
 
-    if (notes === undefined) return
+    if (notesPinned === undefined) return
     return <section className="list-container">
-        <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter}/>
+        <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter} />
         {typeNote === null && <div className="box-note">
             <h3 onClick={() => setTypeNote('text')}>Take a note.... </h3>
             <section>
@@ -106,8 +110,12 @@ export function NoteList() {
             </section>
         </div>}
         {typeNote !== null && <NoteAdd setTypeNote={setTypeNote} type={typeNote} addNoteTodos={addNoteTodos} addNotetxt={addNotetxt} addNoteImage={addNoteImage} />}
+        {<section className="notes-list">
+            {notesPinned.length > 0 && <h1>Pinned</h1>}
+            {notesPinned.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} />)}
+        </section>}
         <section className="notes-list">
-            {notes.map((note) => <NotePreview key={note.id} note={note}  removeNote={removeNote} />)}
+            {notes.map((note) => <NotePreview key={note.id} note={note} removeNote={removeNote} />)}
         </section>
     </section>
 }

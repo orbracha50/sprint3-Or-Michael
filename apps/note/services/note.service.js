@@ -175,12 +175,12 @@ function _createNotes() {
                 id: utilService.makeId(),
                 createdAt: 1112222,
                 type: 'NoteTxt',
-                isPinned: true,
+                isPinned: false,
                 style: {
                     backgroundColor: '#00d'
                 },
                 info: {
-                    txt: 'To cause wrapping behavior add the property flex-wrap with a value of wrap. Now, if your items are too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width. The total width of the items is too wide for the flex container. As flex-wrap is set to wrap, the items wrap across multiple lines. If you set it to nowrap, which is the initial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit. Me Baby!',
+                    txt: 'nitial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit. Me Baby!',
                     title: 'testing'
                 }
             },
@@ -203,10 +203,10 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'gray'
                 },
                 info: {
-                    txt: 'To cause wrapping behavior add the property flex-wrap with a value of wrap. Now, if your items are too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width. The total width of the items is too wide for the flex container. As flex-wrap is set to wrap, the items wrap across multiple lines. If you set it to nowrap, which is the initial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit.',
+                    txt: 'shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit.',
                     title: 'testing'
                 }
             },
@@ -216,10 +216,10 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'white'
                 },
                 info: {
-                    txt: 'To cause wrapping behavior add the property flex-wrap with a value of wrap. Now, if your items are too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width. The total width of the items is too wide for the flex container. As flex-wrap is set to wrap, the items wrap across multiple lines. If you set it to nowrap, which is the initial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit.',
+                    txt: ' the items were not able to shrink, or could not shrink small enough to fit.',
                     title: 'lorem'
                 }
             },
@@ -234,7 +234,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'orange'
                 }
             },
             {
@@ -273,7 +273,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'red'
                 }
             },
             {
@@ -286,7 +286,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'yellow'
                 }
             },
             {
@@ -299,7 +299,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'lightgreen'
                 }
             },
             {
@@ -321,7 +321,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'lightblue'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!',
@@ -338,7 +338,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'purple'
                 }
             },
         ]

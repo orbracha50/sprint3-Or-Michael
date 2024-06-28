@@ -16,4 +16,7 @@
 .done::before {
     opacity: 1;
 }
+.pinned{
+    border: 3px solid black;
+}
 
