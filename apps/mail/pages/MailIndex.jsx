@@ -1,26 +1,29 @@
 import { MailList } from "../cmps/MailList.jsx"
-import {showErrorMsg,showSuccessMsg,} from "../../../services/event-bus.service.js"
+import {showErrorMsg,showSuccessMsg} from "../../../services/event-bus.service.js"
 import { mailService } from "../services/mail.service.js"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailFolderFilter } from "../cmps/MailFolderList.jsx"
+import { MailCompose } from "../cmps/MailCompose.jsx"
 
-const { Link, Outlet, useSearchParams } = ReactRouterDOM
+const { useSearchParams } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailIndex() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [mails, setMails] = useState(null)
   const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+  const [onComposeMail, setOnComposeMail] = useState(false)
 
   useEffect(() => {
+    setSearchParams(filterBy)
     loadMails()
   }, [filterBy])
 
   function loadMails() {
-    mailService.query(filterBy)
+    mailService
+      .query(filterBy)
       .then((mails) => {
         setMails(mails)
-        showSuccessMsg(`Mails Loaded Successfully!`)
       })
       .catch((err) => {
         console.log("err:", err)
@@ -28,31 +31,32 @@ export function MailIndex() {
       })
   }
 
-  function markUnread(mailId) {
-    mailService.get(mailId)
-      .then((mail) => ({ ...mail, ["isRead"]: false }))
-      .then((mail) => mailService.save(mail).then(loadMails()))
-  }
-
-  function trashMail(mailId) {
-    mailService.get(mailId).then((mail) => ({ ...mail, ["removeAt"]: Date.now() }))
-      .then((mail) => mailService.save(mail))
-      showSuccessMsg('Mail Trashed')
-      setMails(mails => mails.filter(mail => mail.id !== mailId))
+  function onTrashMail(mailId) {
+    mailService
+      .get(mailId)
+      .then((mail) => ({ ...mail, ["removeAt"]: Date.now() }))
+      .then((mail) => {
+        mailService.save(mail)
+        showSuccessMsg(`${mailId} has been sent to the trash!`)
+      })
+    setMails((mails) => mails.filter((mail) => mail.id !== mailId))
   }
 
   function onSetFilter(filterBy) {
     setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }))
   }
 
+  function onSetComposeMail() {
+    setOnComposeMail(onComposeMail => !onComposeMail)
+  }
+
   if (!mails) return <div className="mail-loader"></div>
   return (
     <section className="mail-index">
-      <MailFolderFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+      <MailFolderFilter filterBy={filterBy} onSetFilter={onSetFilter} onComposeMail={onComposeMail} onSetComposeMail={onSetComposeMail}/>
       <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-      <MailList mails={mails} trashMail={trashMail} markUnread={markUnread} />
-
-      <Outlet mails={mails}/>
+      <MailList mails={mails} onTrashMail={onTrashMail} filterBy={filterBy} />
+      {onComposeMail ? <MailCompose mails={mails} setMails={setMails} /> : null}
     </section>
   )
 }

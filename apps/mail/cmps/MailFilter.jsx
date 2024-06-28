@@ -6,7 +6,6 @@ export function MailFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 700))
-
     useEffect(() => {
         onSetFilterDebounce.current(filterByToEdit)
     }, [filterByToEdit])
@@ -40,10 +39,12 @@ export function MailFilter({ filterBy, onSetFilter }) {
     const {subject} = filterByToEdit
 
     return (
-        <section>
+        <section className="mail-filter-container">
             <form onSubmit={onSubmitFilter}>
                 <input className="mail-filter" placeholder="Search for mail" value={subject || ''} onChange={handleChange} name="subject" type="text" id="subject" />
             </form>
+            <h1>{filterBy.status}</h1>
+            <hr></hr>
         </section>
     )
 }
