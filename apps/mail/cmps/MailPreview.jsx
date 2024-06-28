@@ -4,7 +4,7 @@ import { LongTxt } from "../cmps/LongTxt.jsx"
 import { mailService } from "../services/mail.service.js"
 const { useNavigate, useParams, Link, Outlet } = ReactRouterDOM
 
-export function MailPreview({ mail, trashMail, filterBy }) {
+export function MailPreview({ mail, onTrashMail, filterBy }) {
   const { subject, from, sentAt, to, body, isRead, id, removeAt, isStared } =
     mail
   const [isHovering, setIsHovering] = useState(false)
@@ -45,7 +45,7 @@ export function MailPreview({ mail, trashMail, filterBy }) {
     </svg>
   )
 
-  function markUnread() {
+  function onMarkUnread() {
     if (isRead) {
       setIsReadLocal((isReadLocal) => !isRead)
       mail.isRead = false
@@ -53,7 +53,7 @@ export function MailPreview({ mail, trashMail, filterBy }) {
     }
   }
 
-  function starMail(event) {
+  function onStarMail(event) {
     disableDetails(event)
     setIsStaredLocal((isStaredLocal) => !isStared)
     mail.isStared = !mail.isStared
@@ -109,7 +109,7 @@ export function MailPreview({ mail, trashMail, filterBy }) {
           onClick={(event) => disableDetails(event)}
           className={`${isHovering ? "visible" : "hidden"}`}
         >
-          <DisplayIcons id={id} trashMail={trashMail} markUnread={markUnread} />
+          <DisplayIcons id={id} onTrashMail={onTrashMail} onMarkUnread={onMarkUnread} />
         </div>
       </section>
     </section>

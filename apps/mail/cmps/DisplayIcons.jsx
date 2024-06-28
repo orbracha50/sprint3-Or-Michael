@@ -1,4 +1,4 @@
-export function DisplayIcons({ id, trashMail, markUnread }) {
+export function DisplayIcons({ id, onTrashMail, onMarkUnread }) {
   return (
     <ul className="icons">
       <svg
@@ -13,7 +13,7 @@ export function DisplayIcons({ id, trashMail, markUnread }) {
       </svg>
       <svg
       className="icon-wrap"
-        onClick={() => trashMail(id)}
+        onClick={() => onTrashMail(id)}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
@@ -24,7 +24,7 @@ export function DisplayIcons({ id, trashMail, markUnread }) {
       </svg>
       <svg
       className="icon-wrap"
-        onClick={() => markUnread(id)}
+        onClick={() => onMarkUnread(id)}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
