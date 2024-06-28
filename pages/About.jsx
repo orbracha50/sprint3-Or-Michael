@@ -13,7 +13,7 @@ export function About() {
       <div className="profile-card">
         <img className="developer-image" src="./assets/img/default-user-img.png" alt="michael-image"></img>
         <div className="developer-info">
-          <h2>Information About Michael:</h2>
+          <h1>Information About Michael:</h1>
           <p>
             I'm the developer of the Mail app which is mimiced from Google
             Gmail and has a backend mimiced server-side using LocalStorage with
