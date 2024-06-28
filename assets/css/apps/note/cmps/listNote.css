@@ -34,6 +34,9 @@
      height: max-content;
      cursor: pointer;
  }
+ .notes:hover{
+    outline: 1px solid black;
+ }
 
  .notes h1 {
      font-size: 30px;
