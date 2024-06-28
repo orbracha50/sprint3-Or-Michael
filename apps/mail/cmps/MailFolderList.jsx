@@ -5,7 +5,7 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 export function MailFolderFilter({ filterBy, onSetFilter, onComposeMail ,setOnComposeMail }) {
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
   const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 700))
-
+  const mailId = useParams()
   useEffect(() => {
     onSetFilterDebounce.current(filterByToEdit)
   }, [filterByToEdit])
@@ -66,7 +66,7 @@ export function MailFolderFilter({ filterBy, onSetFilter, onComposeMail ,setOnCo
               <path d="M190.15-298.15v-28.93h579.7v28.93h-579.7Zm0-167.7v-28.92h579.7v28.92h-579.7Zm0-167.69v-28.92h579.7v28.92h-579.7Z" />
             </svg>
           </div>
-          <Link to="/mail/compose">
+          <Link to={`/mail/compose/''`}>
             <button className="compose-mail">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -3,6 +3,7 @@
     transition: background-color 0.25s;
     height: 1.3em;
     width: 1.29em;
+    padding: 5px;
     border-radius: 50%;
   }
   

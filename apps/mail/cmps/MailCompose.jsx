@@ -4,9 +4,10 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 const { useNavigate, useParams, Link } = ReactRouterDOM
 const { useState, useEffect } = React
 
-export function MailCompose({onSetComposeMail, }) {
+export function MailCompose() {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyEmail())
-  const mailId = null
+  const navigate = useNavigate()
+  const { mailId } = useParams()  
 
   useEffect(() => {
     if (mailId) loadMail()
@@ -24,6 +25,7 @@ export function MailCompose({onSetComposeMail, }) {
     mailToEdit.sentAt = Date.now()
     mailService.save(mailToEdit)
       .then(() => {
+        navigate(-1);
         showSuccessMsg(`Mail sent successfully!`)
       })
       .catch((err) => console.log("err:", err))
@@ -33,6 +35,7 @@ export function MailCompose({onSetComposeMail, }) {
     mailService
       .save(mailToEdit)
       .then(() => {
+        navigate(-1);
         showSuccessMsg(`Mail drafted successfully!`)
       })
       .catch((err) => console.log("err:", err))

@@ -4,7 +4,7 @@ import { LongTxt } from "../cmps/LongTxt.jsx"
 import { mailService } from "../services/mail.service.js"
 const { useNavigate, useParams, Link, Outlet } = ReactRouterDOM
 
-export function MailPreview({ mail, onTrashMail, filterBy }) {
+export function MailPreview({ mail, onTrashMail }) {
   const { subject, from, sentAt, to, body, isRead, id, removeAt, isStared } =
     mail
   const [isHovering, setIsHovering] = useState(false)
@@ -14,7 +14,7 @@ export function MailPreview({ mail, onTrashMail, filterBy }) {
   const readClass = isReadLocal ? "read" : ""
   const isStar = isStaredLocal ? (
     <svg
-      onClick={(event) => starMail(event)}
+      onClick={(event) => onStarMail(event)}
       className="icon-wrap"
       xmlns="http://www.w3.org/2000/svg"
       enableBackground="new 0 0 24 24"
@@ -33,7 +33,7 @@ export function MailPreview({ mail, onTrashMail, filterBy }) {
     </svg>
   ) : (
     <svg
-      onClick={(event) => starMail(event)}
+      onClick={(event) => onStarMail(event)}
       className="icon-wrap"
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -70,10 +70,10 @@ export function MailPreview({ mail, onTrashMail, filterBy }) {
   }
 
   function handleDraft() {
-    if(filterBy.status === 'draft') {
-      navigate(`/mail/compose`)
+    if(!sentAt) {
+      navigate(`/mail/compose/${id}`)
     } else {
-      navigate(`/mail/${id}`)
+      navigate(`/mail/details/${id}`)
     }
   }
 
