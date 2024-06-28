@@ -1,28 +1,60 @@
 .mail-preview {
-    font-family: roboto, sans-serif;
-    font-size: 1.2em;
-    border-bottom: 1px solid transparent;
+  font-family: roboto, sans-serif;
+  font-size: 1.1em;
 }
 
 .mail-preview:hover {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
 .mail-preview .mail-container {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 10px;
+  border-bottom: 1px solid rgba(32, 33, 36, 0.1);
 }
 
 .mail-preview .mail-container h2 {
-    justify-content: space-between;
-    margin: 0;
-    flex-grow: 1;
-    pointer-events: none;
+  flex: 0 2 auto;
+  margin: 0;
+  pointer-events: none;
 }
 
 .mail-preview .mail-container p {
-    color: rgba(32, 33, 36, 0.6);
+  flex: 2 1 auto;
+  color: #5f6368;
+  margin: 0;
+  color: rgba(32, 33, 36, 0.6);
+}
+
+.email-date {
+  flex: 0 0 auto;
+  text-align: right;
+  color: #5f6368;
+  margin: 0;
+}
+
+.mail-container div,
+.visible {
+  justify-content: flex-end;
+  order: 2;
+}
+
+.mail-container.read {
+  background-color: rgba(242, 246, 252, 1);
+  box-shadow: rgba(100, 121, 143, 0.15) 0px -1px 0px 0px inset;
+  color: rgba(32, 33, 36, 0.6);
+}
+
+.mail-container {
+  display: flex;
+  gap: 30px;
+  padding: 25px;
+  justify-content: space-between;
+  background-color: white;
+  color: rgba(32, 33, 36);
+  box-shadow: rgba(255, 255, 255, 0.12) 0px -1px 0px 0px inset;
 }

@@ -13,7 +13,6 @@ export function MailFolderFilter({ filterBy, onSetFilter }) {
   function handleChange({ target }) {
     const field = target.name
     let value = target.value
-    console.log(field, value)
 
     switch (target.type) {
       case "number":

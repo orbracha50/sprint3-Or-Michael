@@ -6,7 +6,6 @@ const { useState, useEffect } = React
 
 export function MailCompose() {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyEmail())
-  const navigate = useNavigate()
   const mailId = null
 
   useEffect(() => {
@@ -25,31 +24,21 @@ export function MailCompose() {
     mailToEdit.sentAt = Date.now()
     mailService.save(mailToEdit)
       .then(() => {
-        navigate("/mail")
-        //location.reload()
         showSuccessMsg(`Mail sent successfully!`)
       })
       .catch((err) => console.log("err:", err))
   }
 
   function onDraftMail(ev) {
-    ev.preventDefault()
-    if (!mailToEdit.to) {
-      navigate("/mail")
-      location.reload()
-    }
     mailService
       .save(mailToEdit)
       .then(() => {
-        navigate("/mail")
-        location.reload()
         showSuccessMsg(`Mail drafted successfully!`)
       })
       .catch((err) => console.log("err:", err))
   }
 
   function handleChange({ target }) {
-    console.log(mailToEdit)
     const field = target.name
     let value = target.value
     switch (target.type) {

@@ -20,7 +20,6 @@ export function MailIndex() {
     mailService.query(filterBy)
       .then((mails) => {
         setMails(mails)
-        showSuccessMsg(`Mails Loaded Successfully!`)
       })
       .catch((err) => {
         console.log("err:", err)
@@ -28,16 +27,11 @@ export function MailIndex() {
       })
   }
 
-  function markUnread(mailId) {
-    mailService.get(mailId)
-      .then((mail) => ({ ...mail, ["isRead"]: false }))
-      .then((mail) => mailService.save(mail).then(loadMails()))
-  }
-
   function trashMail(mailId) {
     mailService.get(mailId).then((mail) => ({ ...mail, ["removeAt"]: Date.now() }))
-      .then((mail) => mailService.save(mail))
-      showSuccessMsg('Mail Trashed')
+      .then((mail) => {mailService.save(mail)
+        showSuccessMsg(`${mailId} has been sent to the trash!`)
+      })
       setMails(mails => mails.filter(mail => mail.id !== mailId))
   }
 
@@ -50,9 +44,9 @@ export function MailIndex() {
     <section className="mail-index">
       <MailFolderFilter filterBy={filterBy} onSetFilter={onSetFilter} />
       <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-      <MailList mails={mails} trashMail={trashMail} markUnread={markUnread} />
+      <MailList mails={mails} trashMail={trashMail} filterBy={filterBy} />
 
-      <Outlet mails={mails}/>
+      <Outlet />
     </section>
   )
 }

@@ -23,19 +23,3 @@
   transition: margin-right 0.5s;
   transition: all 0.5s;
 }
-
-.mail-container.read {
-  background-color: rgba(242, 246, 252, 1);
-  box-shadow: rgba(100, 121, 143, 0.15) 0px -1px 0px 0px inset;
-  color: rgba(32, 33, 36, 0.6);
-}
-
-.mail-container {
-  display: flex;
-  gap: 30px;
-  padding: 25px;
-  justify-content: space-between;
-  background-color: white;
-  color: rgba(32, 33, 36);
-  box-shadow: rgba(255, 255, 255, 0.12) 0px -1px 0px 0px inset;
-}

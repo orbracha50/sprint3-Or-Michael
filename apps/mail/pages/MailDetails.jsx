@@ -22,8 +22,9 @@ export function MailDetails() {
       .catch((err) => console.log("err:", err))
   }
 
-  function trashMail(mailId) {
-    mailService.remove(mailId)
+  function onTrashMail() {
+    mail.removeAt = Date.now()
+    mailService.save(mail)
       .then(() => {
         navigate("/mail")
         showSuccessMsg(`Mail ${mailId} successfully trashed!`)
@@ -53,7 +54,7 @@ export function MailDetails() {
       <span>
       <svg
       className="icon-wrap"
-        onClick={() => trashMail(mailId)}
+        onClick={() => onTrashMail(mailId)}
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 -960 960 960"
@@ -65,7 +66,7 @@ export function MailDetails() {
       </span>
       <section className="mail-header">
       <h1>Subject: {mail.subject}</h1>
-      <h2>From: {mail.from}</h2>
+      <h2><img className="sender" src="./assets/img/default-user-img.png"></img>From: {mail.from}</h2>
       </section>
       <section className="mail-body">
         <h2>To: {mail.to}</h2>

@@ -1,6 +1,6 @@
 import { MailPreview } from "./MailPreview.jsx"
 
-export function MailList({ mails, trashMail, markUnread, updateStar }) {
+export function MailList({ mails, trashMail, markUnread, filterBy }) {
   return (
     <ul className="mail-list">
       {mails.map((mail) => (
@@ -9,7 +9,7 @@ export function MailList({ mails, trashMail, markUnread, updateStar }) {
             mail={mail}
             trashMail={trashMail}
             markUnread={markUnread}
-            updateStar={updateStar}
+            filterBy={filterBy}
           />
         </li>
       ))}
