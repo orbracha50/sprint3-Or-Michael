@@ -14,7 +14,6 @@ export const NoteService = {
     getNextBookId,
     getEmptyBook,
     getFilterBy,
-    setFilterBy,
     getFilterFromSearchParams,
     getGenerStats,
     getPriceStats,
@@ -22,16 +21,19 @@ export const NoteService = {
 }
 
 function query(filterBy = {}) {
-
     return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
-            if (filterBy.filterBy==='Text') {
+            if(filterBy.title !== ''){
+                const regExp = new RegExp(filterBy.title, 'i')
+                notes = notes.filter(note => regExp.test(note.info.title) )
+            }
+            if (filterBy.category==='Text') {
                 notes = notes.filter(note => note.type === 'NoteTxt')
             }
-            if (filterBy.filterBy==='todos') {
+            if (filterBy.category==='todos') {
                 notes = notes.filter(note => note.type === 'NoteTodos')
             }
-            if (filterBy.filterBy==='image') {
+            if (filterBy.category==='image') {
                 notes = notes.filter(note => note.type === 'NoteImg')
             }
             return notes
@@ -131,21 +133,11 @@ function getEmptyBook() {
     }
 
 }
-function addNo(book) {
-    const url = URL + book
-    const data = axios.get(url)
-        .then(data => data = data.data.items)
-    return data
-}
+
 function getFilterBy() {
     return { ...filterBy }
 }
 
-function setFilterBy(filterBy = {}) {
-    if (filterBy.txt !== undefined) filterBy.txt = filterBy.txt
-    if (filterBy.minPrice !== undefined) filterBy.minPrice = filterBy.minPrice
-    return filterBy
-}
 
 function getNextBookId(bookId) {
     return storageService.query(BOOK_KEY)

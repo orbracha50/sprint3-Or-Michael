@@ -8,9 +8,6 @@ export function NoteTxt({ note, removeNote,setPinned}) {
     function editNote() {
         setToEdit('true')
     }
-    function checkIfPined({target}){
-        console.log(target)
-    }
     function handleChange({ target }) {
 
         const field = target.name
