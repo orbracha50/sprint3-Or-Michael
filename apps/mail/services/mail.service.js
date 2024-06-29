@@ -1,4 +1,5 @@
 // mail service
+
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
 import { asyncStorageService } from '../../../services/async-storage.service.js'
@@ -10,7 +11,7 @@ _createEmails()
 const loggedinUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
-   }
+}
 
 export const mailService = {
     query,
@@ -42,7 +43,7 @@ function query(filterBy = {}) {
                     case 'sent':
                         mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt !== null)
                         break
-                        case 'stared':
+                    case 'stared':
                         mails = mails.filter(mail => mail.isStared === true)
                         break
                     default:
@@ -59,7 +60,6 @@ function query(filterBy = {}) {
             // if (filterBy.lables) {
             //     mails = mails.filter(mail => mail.lables === filterBy.lables)
             // }
-            console.log(mails)
             return mails
         })
 }
@@ -98,24 +98,23 @@ function getLoggedInUser() {
     return loggedinUser
 }
 
-function getFilterFromSearchParams(searchParams) {
-    // return Object.fromEntries(searchParams)
-    const title = searchParams.get('title') || ''
-    const price = searchParams.get('price') || ''
-    return {
-        title,
-        price
-    }
-}
-
 function getDefaultFilter() {
     return {
-        status: 'inbox',
+        status: '',
         subject: '',
         isRead: null,
         isStared: null,
         lables: [],
     }
+}
+
+function getFilterFromSearchParams(searchParams) {
+    const defaultFilter = getDefaultFilter()
+    const filterBy = {}
+    for (const field in defaultFilter) {
+        filterBy[field] = searchParams.get(field) || ''
+    }
+    return filterBy
 }
 
 function getFilterBy() {
