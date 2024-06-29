@@ -16,16 +16,26 @@
     padding: 5px;
 }
 
-.input-container{
-    display: flex;
+.input-container {
+    display: grid;
+    grid-auto-flow: row;
     justify-content: center;
-    color:gray;
+    gap: 2px;
+    color: gray;
 }
-.search-icon{
+
+.input-container input {
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+}
+
+.search-icon {
     background-color: rgba(240, 248, 255, 0);
     border: 0px;
     border-radius: 50%;
     margin-left: 5px;
+    border-radius: ;
 }
 
 .menu-icon:hover,
@@ -35,7 +45,8 @@
     cursor: pointer;
 }
 
-.menu-icon,.setting-icon{
+.menu-icon,
+.setting-icon {
     height: 40px;
     width: 40px;
     border-radius: 50%;

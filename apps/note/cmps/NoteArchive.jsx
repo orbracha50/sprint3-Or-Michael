@@ -5,11 +5,10 @@ import { utilService } from "../../../services/util.service.js"
 import { AppHeaderNote } from "./AppHeaderNote.jsx"
 import { NoteFilter } from "./NoteFilter.jsx"
 const { useEffect, useState } = React
-export function NoteList() {
+export function NoteArchive() {
     const [notesAll, setNotesAll] = useState()
     const [notesOther, setNotesOther] = useState()
     const [typeNote, setTypeNote] = useState(null)
-    const [change, setchange] = useState(null)
     const [filterBy, setFilterBy] = useState({ filterBy: '' })
     const [notesPinned, setNotesPinned] = useState()
     const [archiveNote, setArchiveNote] = useState([])
@@ -17,11 +16,11 @@ export function NoteList() {
     useEffect(() => {
         loadNotes()
         /* setSearchParams(filterBy) */
-    }, [filterBy, change])
+    }, [filterBy, notesOther])
 
 
     function loadNotes() {
-        const page = 'notes'
+        const page = 'archive'
         NoteService.query(filterBy, page)
             .then(notesS => {
                 setNotesAll(notesS)
@@ -48,15 +47,14 @@ export function NoteList() {
         }
         setTypeNote(null)
         setNotesOther(prevNotes => [...prevNotes, note])
-        NoteService.save(note, 'notes')
+        NoteService.save(note)
     }
     function removeNote(note) {
         const noteId = note.id
-        NoteService.remove(noteId, 'notes')
+        NoteService.remove(noteId, 'archive')
             .then(() => {
                 setNotesOther(notesAll.filter((note) => note.isPinned === false))
                 setNotesPinned(notesAll.filter((note) => note.isPinned === true))
-                setchange(true)
                 /* showSuccessMsg(`Car (${noteId}) removed successfully!`) */
             })
             .catch(err => {
@@ -79,7 +77,7 @@ export function NoteList() {
         }
         setTypeNote(null)
         setNotesOther(prevNotes => [...prevNotes, note])
-        NoteService.save(note, 'notes')
+        NoteService.save(note)
     }
     function addNoteTodos(todos, title) {
         todos.shift()
@@ -94,7 +92,7 @@ export function NoteList() {
         }
         setTypeNote(null)
         setNotesOther(prevNotes => [...prevNotes, note])
-        NoteService.save(note, 'notes')
+        NoteService.save(note)
     }
     function onSetFilter(filterBy) {
         setFilterBy({ ...filterBy })
@@ -109,13 +107,13 @@ export function NoteList() {
             setNotesOther(notesAll.filter((note) => note.isPinned === false))
             setNotesPinned(notesAll.filter((note) => note.isPinned === true))
         }
-        NoteService.save(noteTo, 'notes')
+        NoteService.save(noteTo)
     }
     function setArchive(note) {
-        const page = 'notes'
+        const page = 'archive'
         if (NoteService.get(note.id, page)) {
             console.log('hi')
-            NoteService.save(note, 'archive')
+            NoteService.save(note, 'notes')
             removeNote(note)
             /*  } if (NoteService.get(note.id, 'notes')) {
                  console.log('hi')
@@ -123,9 +121,7 @@ export function NoteList() {
                  removeNote(note)
              } */
         }
-        setchange(false)
     }
-
     if (notesPinned === undefined) return
     return <section className="list-container">
         <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter} />
@@ -137,16 +133,9 @@ export function NoteList() {
                 <svg onClick={() => setTypeNote('image')} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90-120-120 160Zm-40 80v-560 560Z" /></svg>
             </section>
         </div>}
-        {typeNote !== null && <NoteAdd setTypeNote={setTypeNote} type={typeNote} addNoteTodos={addNoteTodos} addNotetxt={addNotetxt} addNoteImage={addNoteImage} />}
-        {notesPinned.length > 0 && <section>
-            <h1>PINNED</h1>
-            <section className="notes-list">
-                {notesPinned.map((note) => <NotePreview setArchive={setArchive} setArchiveNote={setArchiveNote} key={note.id} note={note} removeNote={removeNote} setPinned={setPinned} />)}
-            </section>
-        </section>}
-        <h1>Others</h1>
+        <h1>Archive</h1>
         <section className="notes-list">
-            {notesOther.map((note) => <NotePreview setArchive={setArchive} key={note.id} note={note} removeNote={removeNote} setPinned={setPinned} />)}
+            {notesAll.map((note) => <NotePreview setArchive={setArchive} setArchiveNote={setArchiveNote} key={note.id} note={note} removeNote={removeNote} setPinned={setPinned} />)}
         </section>
     </section>
 }

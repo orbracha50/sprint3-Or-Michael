@@ -2,10 +2,12 @@
 // note service
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
-import {  asyncStorageService } from '../../../services/async-storage.service.js'
+import { asyncStorageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'noteDB'
+const NOTE_ARCHIVE_KEY = 'noteArchiveDB'
 _createNotes()
+_createNotesArcive()
 export const NoteService = {
     query,
     get,
@@ -16,39 +18,63 @@ export const NoteService = {
     loadImageFromInput
 }
 
-function query(filterBy = {}) {
-    return asyncStorageService.query(NOTE_KEY)
+function query(filterBy = {}, page) {
+    let key = ''
+    if (page === 'notes') key = NOTE_KEY
+    if (page === 'archive') key = NOTE_ARCHIVE_KEY
+    return asyncStorageService.query(key)
         .then(notes => {
-            if(filterBy.title !== ''){
+            if (filterBy.title !== '') {
                 const regExp = new RegExp(filterBy.title, 'i')
-                notes = notes.filter(note => regExp.test(note.info.title) )
+                notes = notes.filter(note => regExp.test(note.info.title))
             }
-            if (filterBy.category==='Text') {
+            if (filterBy.category === 'Text') {
                 notes = notes.filter(note => note.type === 'NoteTxt')
             }
-            if (filterBy.category==='todos') {
+            if (filterBy.category === 'todos') {
                 notes = notes.filter(note => note.type === 'NoteTodos')
             }
-            if (filterBy.category==='image') {
+            if (filterBy.category === 'image') {
                 notes = notes.filter(note => note.type === 'NoteImg')
             }
             return notes
         })
 }
 
-function get(noteId) {
-    return storageService.get(NOTE_KEY, noteId)
+function get(noteId, page) {
+    let key = ''
+    if (page === 'notes') key = NOTE_KEY
+    if (page === 'archive') key = NOTE_ARCHIVE_KEY
+    return asyncStorageService.get(key, noteId)
 }
 
-function remove(noteId) {
-    return asyncStorageService.remove(NOTE_KEY, noteId)
+function remove(noteId, page) {
+    let key = ''
+    console.log(page)
+    if (page === 'notes') key = NOTE_KEY
+    if (page === 'archive') key = NOTE_ARCHIVE_KEY
+       return asyncStorageService.remove(key, noteId) 
+   
+    
 }
 
-function save(note) {
-    if (note.id) {
-        return asyncStorageService.put(NOTE_KEY, note)
-    } else {
-        return asyncStorageService.post(NOTE_KEY, note)
+function save(note, page) {
+    console.log(page)
+    let key = ''
+    if (page === 'notes'|| page === 'notesedit' ) key = NOTE_KEY
+    if (page === 'archive') key = NOTE_ARCHIVE_KEY
+    if (note.id && page === 'notes') {
+        return asyncStorageService.post(key, note)
+    }
+    if(page === 'notesedit'){
+        return asyncStorageService.put(key, note)
+    }
+    if(page === 'archive'){
+        console.log('hi')
+        return asyncStorageService.post(key, note)
+    }
+     else{
+        return asyncStorageService.post(key, note)
     }
 }
 function getDefaultFilter() {
@@ -72,7 +98,7 @@ function getFilterBy() {
 function loadImageFromInput(imgUrl) {
     console.log(imgUrl)
     const reader = new FileReader()
-    
+
     reader.onload = function (event) {
         let img = new Image()
         img.src = event.target.result
@@ -99,7 +125,7 @@ function _createNotes() {
                 }
             },
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: false,
@@ -137,9 +163,9 @@ function _createNotes() {
                     title: 'lorem'
                 }
             },
-            
+
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: true,
@@ -152,7 +178,7 @@ function _createNotes() {
                 }
             },
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
@@ -165,7 +191,7 @@ function _createNotes() {
                 }
             },
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: true,
@@ -178,7 +204,7 @@ function _createNotes() {
                 }
             },
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
@@ -191,7 +217,7 @@ function _createNotes() {
                 }
             },
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
@@ -204,7 +230,7 @@ function _createNotes() {
                 }
             },
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
@@ -243,7 +269,7 @@ function _createNotes() {
                 }
             },
             {
-                id:  utilService.makeId(),
+                id: utilService.makeId(),
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
@@ -259,4 +285,25 @@ function _createNotes() {
     }
 
     storageService.saveToStorage(NOTE_KEY, notes)
+}
+
+function _createNotesArcive() {
+    let notes = storageService.loadFromStorage(NOTE_ARCHIVE_KEY)
+    if (!notes || !notes.length) {
+        notes = [
+            {
+                id: utilService.makeId(),
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#00d'
+                },
+                info: {
+                    txt: 'nitial value, and they will shrink to fit the container. They shrink because they are using initial flexbox values, including flex-shrink: 1, that allows items to shrink. Using nowrap would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit. Me Baby!',
+                    title: 'testing'
+                }
+            }]
+    }
+    storageService.saveToStorage(NOTE_ARCHIVE_KEY, notes)
 }
