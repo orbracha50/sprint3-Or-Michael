@@ -2,11 +2,11 @@ const { useState, useEffect } = React
 import { DisplayIcons } from "../cmps/DisplayIcons.jsx"
 import { LongTxt } from "../cmps/LongTxt.jsx"
 import { mailService } from "../services/mail.service.js"
+import { MailCompose } from "./MailCompose.jsx"
 const { useNavigate, useParams, Link, Outlet } = ReactRouterDOM
 
 export function MailPreview({ mail, onTrashMail }) {
-  const { subject, from, sentAt, to, body, isRead, id, removeAt, isStared } =
-    mail
+  const { subject, from, sentAt, to, body, isRead, id, removeAt, isStared } = mail
   const [isHovering, setIsHovering] = useState(false)
   const [isStaredLocal, setIsStaredLocal] = useState(isStared)
   const [isReadLocal, setIsReadLocal] = useState(isRead)
@@ -71,7 +71,7 @@ export function MailPreview({ mail, onTrashMail }) {
 
   function handleDraft() {
     if(!sentAt) {
-      navigate(`/mail/compose/${id}`)
+      <MailCompose mailId={mail.id} />
     } else {
       navigate(`/mail/details/${id}`)
     }
@@ -102,7 +102,7 @@ export function MailPreview({ mail, onTrashMail }) {
         <LongTxt txt={body} />
         <div className="email-date">
           <h1 className={isHovering ? "hidden" : "visible"}>
-            {new Date(sentAt).toLocaleDateString()}
+            {(sentAt) ? new Date(sentAt).toLocaleDateString() : ''}
           </h1>
         </div>
         <div
@@ -112,6 +112,7 @@ export function MailPreview({ mail, onTrashMail }) {
           <DisplayIcons id={id} onTrashMail={onTrashMail} onMarkUnread={onMarkUnread} />
         </div>
       </section>
+
     </section>
   )
 }

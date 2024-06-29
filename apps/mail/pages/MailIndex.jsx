@@ -11,12 +11,14 @@ const { useState, useEffect } = React
 export function MailIndex() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [mails, setMails] = useState(null)
-  const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
+  const [filterBy, setFilterBy] = useState(
+    mailService.getFilterFromSearchParams(searchParams)
+  )
   const [onComposeMail, setOnComposeMail] = useState(false)
 
   useEffect(() => {
-    loadMails()
     setSearchParams(filterBy)
+    loadMails()
   }, [filterBy])
 
   function loadMails() {
@@ -32,13 +34,19 @@ export function MailIndex() {
   }
 
   function onTrashMail(mailId) {
-    mailService
-      .get(mailId)
-      .then((mail) => ({ ...mail, ["removeAt"]: Date.now() }))
-      .then((mail) => {
-        mailService.save(mail)
-        showSuccessMsg(`${mailId} has been sent to the trash!`)
-      })
+    if (filterBy.status === "trash") {
+      mailService
+        .remove(mailId)
+        .then(() => showSuccessMsg(`${mailId} has been sent to the removed!`))
+    } else {
+      mailService
+        .get(mailId)
+        .then((mail) => ({ ...mail, ["removeAt"]: Date.now() }))
+        .then((mail) => {
+          mailService.save(mail)
+          showSuccessMsg(`${mailId} has been sent to the trash!`)
+        })
+    }
     setMails((mails) => mails.filter((mail) => mail.id !== mailId))
   }
 
@@ -47,16 +55,22 @@ export function MailIndex() {
   }
 
   function onSetComposeMail() {
-    setOnComposeMail(onComposeMail => !onComposeMail)
+    setOnComposeMail((onComposeMail) => !onComposeMail)
   }
 
   if (!mails) return <div className="mail-loader"></div>
   return (
     <section className="mail-index">
-      <MailFolderFilter filterBy={filterBy} onSetFilter={onSetFilter} onComposeMail={onComposeMail} onSetComposeMail={onSetComposeMail}/>
+      <MailFolderFilter
+        filterBy={filterBy}
+        onSetFilter={onSetFilter}
+        onSetComposeMail={onSetComposeMail}
+      />
       <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
       <MailList mails={mails} onTrashMail={onTrashMail} filterBy={filterBy} />
-      {onComposeMail ? <MailCompose mails={mails} setMails={setMails} /> : null}
+      {onComposeMail ? (
+        <MailCompose onSetComposeMail={onSetComposeMail} />
+      ) : null}
     </section>
   )
 }

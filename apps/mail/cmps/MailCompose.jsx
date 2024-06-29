@@ -4,10 +4,9 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 const { useNavigate, useParams, Link } = ReactRouterDOM
 const { useState, useEffect } = React
 
-export function MailCompose() {
+export function MailCompose({onSetComposeMail, mailId}) {
   const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyEmail())
-  const navigate = useNavigate()
-  const { mailId } = useParams()  
+  console.log(mailId)
 
   useEffect(() => {
     if (mailId) loadMail()
@@ -21,21 +20,24 @@ export function MailCompose() {
   }
 
   function onSendMail(ev) {
+    onSetComposeMail()
     ev.preventDefault()
     mailToEdit.sentAt = Date.now()
+    mailToEdit.isRead = true
     mailService.save(mailToEdit)
       .then(() => {
-        navigate(-1);
         showSuccessMsg(`Mail sent successfully!`)
       })
       .catch((err) => console.log("err:", err))
   }
 
   function onDraftMail(ev) {
+    onSetComposeMail()
+    ev.preventDefault()
+    mailToEdit.isRead = true
     mailService
       .save(mailToEdit)
       .then(() => {
-        navigate(-1);
         showSuccessMsg(`Mail drafted successfully!`)
       })
       .catch((err) => console.log("err:", err))
@@ -70,7 +72,7 @@ export function MailCompose() {
     <section className="email-form">
       <h2>Send Mail</h2>
       <form onSubmit={onSendMail}>
-        <Link className="close-btn" onClick={onDraftMail} to="/mail">
+        <button className="close-btn" onClick={onDraftMail} to="/mail">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -80,7 +82,7 @@ export function MailCompose() {
           >
             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
-        </Link>
+        </button>
         <label htmlFor="to">To:</label>
         <input
           value={to || ""}
