@@ -1,1 +1,51 @@
  /* home */
+ .container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.main-home {
+    background: #61dafb;
+    color: #282c34;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.main-home h2 {
+    font-size: 3em;
+    margin: 0 0 20px;
+}
+
+.main-home p {
+    font-size: 1.5em;
+    margin: 0 0 30px;
+}
+
+.app-btn {
+    background: #282c34;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 2em;
+    transition: background 0.3s;
+}
+
+.app-btn:hover {
+    background: #20232a;
+}
+
+.our-apps {
+    padding: 60px 0;
+    text-align: center;
+}
+
+
+.footer {
+    background: #282c34;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}

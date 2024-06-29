@@ -1,14 +1,25 @@
+const { Link, NavLink } = ReactRouterDOM
+
+
 export function Home() {
   return (
     <section className="home">
-      <h1>Welcome to the Appsus app!</h1>
-      <p>
-        Here you'll get to experience our apps which are coded a language named
-        React.
-      </p>
-      <p>
-        This project is coded by Or Bracha and Michael Spiridonov.
-      </p>
+      <section className="main-home">
+        <div className="container">
+            <h2>Your Ultimate App Suite</h2>
+            <p>All your favorite apps in one place. Seamless, efficient, and user-friendly.</p>
+        </div>
+    </section>
+    
+    <section id="our-apps" className="our-apps">
+        <div className="container">
+            <h2>Get Started with Appsus</h2>
+            <p>enjoy the ultimate app suite experience.</p>
+            <Link to="/note" className="app-btn">Note App</Link>
+            <Link to="/mail" className="app-btn">Mail App</Link>
+            <Link to="/book" className="app-btn">Book App</Link>
+        </div>
+    </section>
     </section>
   )
 }
