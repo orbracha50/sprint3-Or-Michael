@@ -2,7 +2,7 @@ import { utilService } from "../../../services/util.service.js"
 
 const { useState, useEffect, useRef } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
-export function MailFolderFilter({ filterBy, onSetFilter, onComposeMail ,setOnComposeMail }) {
+export function MailFolderFilter({ filterBy, onSetFilter ,onSetComposeMail }) {
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
   const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 700))
   const mailId = useParams()
@@ -66,8 +66,7 @@ export function MailFolderFilter({ filterBy, onSetFilter, onComposeMail ,setOnCo
               <path d="M190.15-298.15v-28.93h579.7v28.93h-579.7Zm0-167.7v-28.92h579.7v28.92h-579.7Zm0-167.69v-28.92h579.7v28.92h-579.7Z" />
             </svg>
           </div>
-          <Link to={`/mail/compose/''`}>
-            <button className="compose-mail">
+            <button className="compose-mail" onClick={() => onSetComposeMail()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
@@ -79,7 +78,6 @@ export function MailFolderFilter({ filterBy, onSetFilter, onComposeMail ,setOnCo
               </svg>
               New Email
             </button>
-          </Link>
           <div
             onClick={() =>
               handleChange({ target: { value: "inbox", name: "status" } })
