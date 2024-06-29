@@ -32,23 +32,6 @@ export function NoteArchive() {
             })
     }
 
-    function addNotetxt(title, txt) {
-        const note = {
-            createdAt: Date.now(),
-            type: 'NoteTxt',
-            isPinned: false,
-            style: {
-                backgroundColor: '#00d'
-            },
-            info: {
-                txt: txt,
-                title: title
-            }
-        }
-        setTypeNote(null)
-        setNotesOther(prevNotes => [...prevNotes, note])
-        NoteService.save(note)
-    }
     function removeNote(note) {
         const noteId = note.id
         NoteService.remove(noteId, 'archive')
@@ -61,38 +44,6 @@ export function NoteArchive() {
                 console.log('Problems removing car:', err)
                 /* showErrorMsg(`Having problems removing car!`) */
             })
-    }
-    function addNoteImage(title, img) {
-        const note = {
-            createdAt: Date.now(),
-            type: 'NoteImg',
-            isPinned: false,
-            info: {
-                url: img,
-                title: title
-            },
-            style: {
-                backgroundColor: '#00d'
-            }
-        }
-        setTypeNote(null)
-        setNotesOther(prevNotes => [...prevNotes, note])
-        NoteService.save(note)
-    }
-    function addNoteTodos(todos, title) {
-        todos.shift()
-        const note = {
-            createdAt: Date.now(),
-            type: 'NoteTodos',
-            isPinned: false,
-            info: {
-                title: title.title,
-                todos: todos.map(todo => ({ txt: todo, doneAt: null }))
-            }
-        }
-        setTypeNote(null)
-        setNotesOther(prevNotes => [...prevNotes, note])
-        NoteService.save(note)
     }
     function onSetFilter(filterBy) {
         setFilterBy({ ...filterBy })

@@ -30,14 +30,6 @@
     width: 200px;
 }
 
-.search-icon {
-    background-color: rgba(240, 248, 255, 0);
-    border: 0px;
-    border-radius: 50%;
-    margin-left: 5px;
-    border-radius: ;
-}
-
 .menu-icon:hover,
 .setting-icon:hover,
 .search-icon:hover {

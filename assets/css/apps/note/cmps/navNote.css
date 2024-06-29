@@ -39,6 +39,8 @@
     height: 30px;
     width: 30px;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
 }
 
 .nav li:hover {
@@ -48,7 +50,7 @@
 .nav:hover .note:before {
     content: "Notes";
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 40%;
     font-size: 20px;
     font-weight: bold;
@@ -57,7 +59,7 @@
 .nav:hover .rem:before {
     content: "Reminders";
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 40%;
     font-size: 20px;
     font-weight: bold;
@@ -66,7 +68,7 @@
 .nav:hover .arch:before {
     content: "Archive";
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 40%;
     font-size: 20px;
     font-weight: bold;
@@ -75,7 +77,7 @@
 .nav:hover .edit:before {
     content: "Edit";
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 40%;
     font-size: 20px;
     font-weight: bold;
@@ -84,12 +86,16 @@
 .nav:hover .bin:before {
     content: "Bin";
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 40%;
     font-size: 20px;
     font-weight: bold;
 }
+
 .selected{
     background-color: goldenrod;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 50%;
     border: 1px solid black;
 }
