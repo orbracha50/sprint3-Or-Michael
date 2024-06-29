@@ -40,3 +40,11 @@
 @import "./apps/mail/cmps/MailIcons.css";
 @import "./apps/mail/cmps/MailDetails.css";
 @import "./apps/mail/cmps/MailFilter.css";
+
+
+
+/* Book Cmps */
+@import './apps/book/pages/book-details.css';
+@import './apps/book/pages/book-editor.css';
+@import './apps/book/cmps/book-filter.css';
+@import './apps/book/cmps/book-list.css';

@@ -1,6 +1,21 @@
 .flex {
     display: flex;
 }
+.flex.flex-column{
+    flex-direction: column;
+}
+
+.flex.justify-center{
+    justify-content: center;
+}
+
+.flex.justify-between{
+    justify-content: space-between;
+}
+
+.flex.align-center{
+    align-items: center;
+}
 
 .column {
     flex-direction: column;
@@ -18,6 +33,18 @@
     justify-content: space-between;
 }
 
+/* text helpers */
+
+.colored-text {
+    color: var(--clr1);
+}
+
+.clean-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
 .grid {
     display: grid;
 }
@@ -28,4 +55,26 @@
 
 .visible {
     display: block;
+}
+
+/* font awsome */
+
+.fa {
+    font-family: fa;
+}
+
+.fa.fa-facebook::before {
+    content: "\f39e";
+}
+
+.fa.fa-twitter::before {
+    content: "\f099";
+}
+
+.fa.fa-dribbble::before {
+    content: "\f17d";
+}
+
+.fa.fa-behance::before {
+    content: "\f1b4";
 }

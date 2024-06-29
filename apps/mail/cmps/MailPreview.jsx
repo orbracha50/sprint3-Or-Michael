@@ -71,7 +71,7 @@ export function MailPreview({ mail, onTrashMail }) {
 
   function handleDraft() {
     if(!sentAt) {
-      <MailCompose mailId={mail.id} />
+      navigate(`/mail/compose/${mail.id}`)
     } else {
       navigate(`/mail/details/${id}`)
     }
