@@ -10,8 +10,8 @@
 /* @import './basics/layout.css'; */
 
 /* Pages */
-@import './pages/About.css';
 @import './pages/Home.css';
+@import './pages/About.css';
 
 /* @import './apps/note/pages/NoteIndex.css'; */
 @import url(apps/note/cmps/headerNote.css);

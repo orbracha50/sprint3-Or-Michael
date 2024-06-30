@@ -20,6 +20,11 @@ export function Home() {
             <Link to="/book" className="app-btn">Book App</Link>
         </div>
     </section>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Appsus. All rights reserved.</p>
+        </div>
+    </footer>
     </section>
   )
 }
